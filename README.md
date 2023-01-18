@@ -9,6 +9,7 @@
 * Gabriel Ramon Cupil
 * Bryan Alexander Morales Herrera
 * Alfredo de Jesus Borraz Juarez
+* Jorge Camacho Toledo
 
 ## Tecnologias
 El proyecto fue elaborado con
