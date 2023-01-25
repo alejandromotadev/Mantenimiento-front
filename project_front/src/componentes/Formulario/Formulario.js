@@ -47,18 +47,31 @@ class Formulario extends React.Component {
               ></input>
             </div>
             <div>
-              <h3>Evidencias de entrada</h3>
-              <div className={Style.rowFileInput}>
-                <p>Evidencia</p>
-                <input type="file"></input>
-              </div>
+              <table></table>
             </div>
             <div>
-              <h3>Evidencias de salida</h3>
-              <div className={Style.rowFileInput}>
-                <p>Evidencia</p>
-                <input type="file"></input>
-              </div>
+              <h3>Evidencia de entrada</h3>
+              <table>
+                <tr>
+                  <td>
+                    <label>Evidencia</label>
+                  </td>
+                  <td>
+                    <input type="file"></input>
+                  </td>
+                </tr>
+              </table>
+              <h3>Evidencia de salida</h3>
+              <table>
+                <tr>
+                  <td>
+                    <label>Evidencia</label>
+                  </td>
+                  <td>
+                    <input type="file"></input>
+                  </td>
+                </tr>
+              </table>
             </div>
           </form>
         </div>

@@ -26,15 +26,13 @@ img {
   border-radius: 10px;
   padding-left: 2rem;
 }
-.rowFileInput {
+tr{
   display: flex;
- 
   flex-direction: row;
-  justify-content: space-between;
 }
 
 input[type="file"]::file-selector-button {
-  margin-right: 20px;
+  display: flex;
   border: none;
   background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
   border-radius: 20px;
