@@ -19,29 +19,43 @@ class Formulario extends React.Component {
             </div>
             <div>
               <h3>Nombre: </h3>
-              <input placeholder="Nombre"></input>
+              <input className={Style.styleInput} placeholder="Nombre"></input>
             </div>
             <div>
               <h3>Fase: </h3>
-              <input placeholder="Fase"></input>
+              <input className={Style.styleInput} placeholder="Fase"></input>
             </div>
             <div>
               <h3>Responsable: </h3>
-              <input placeholder="Responsable"></input>
+              <input
+                className={Style.styleInput}
+                placeholder="Responsable"
+              ></input>
             </div>
             <div>
               <h3>Participantes: </h3>
-              <input placeholder="Participantes"></input>
+              <input
+                className={Style.styleInput}
+                placeholder="Participantes"
+              ></input>
             </div>
             <div>
               <h3>Proceso relacionado: </h3>
-              <input placeholder="Proceso relacionado"></input>
+              <input
+                className={Style.styleInput}
+                placeholder="Proceso relacionado"
+              ></input>
             </div>
             <div>
               <h3>Evidencias de entrada</h3>
+              <div className={Style.rowFileInput}>
+                <p>Evidencia</p>
+                <input className={Style.fileInputStyle} type="file"></input>
+              </div>
             </div>
             <div>
               <h3>Evidencias de salida</h3>
+              <input className={Style.fileInputStyle} type="file"></input>
             </div>
           </form>
         </div>

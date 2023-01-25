@@ -1,9 +1,8 @@
-
-header{
+header {
   width: 100%;
   height: 164px;
 }
-img{
+img {
   height: 25%;
   padding-top: 40px;
   padding-left: 5rem;
@@ -19,11 +18,20 @@ img{
   box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.5);
   border-radius: 30px;
 }
-input{
+.styleInput {
   width: 400px;
   height: 50px;
   border: 1px solid rgba(30, 30, 30, 0.3);
   border-radius: 10px;
   padding-left: 2rem;
-  
+}
+.rowFileInput {
+  display: flex;
+  -ms-flex-direction: row;
+}
+.fileInputStyle {
+  width: 150px;
+  height: 30px;
+  background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
+  border-radius: 20px;
 }
