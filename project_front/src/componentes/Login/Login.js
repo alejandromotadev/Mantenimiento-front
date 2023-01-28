@@ -1,7 +1,9 @@
 import React from 'react'
 import style from './styleLogin.module.css'
 import logo from './assets/Qualitor.png'
-const login = () => {
+import { Link } from "react-router-dom";
+
+const Login = () => {
     return (
         <div className={style.main}>
             <div className={style.head}>
@@ -27,11 +29,11 @@ const login = () => {
                 </div>
 
                 <div className={style.wrapper}>
-                    <button className={style.button63} role="button">Entrar</button>
+                    <Link to='/proceso'> <button className={style.button63}>Entrar</button> </Link>
                 </div>
             </div>
         </div>
     )
 }
 
-export default login
+export default Login
