@@ -1,11 +1,18 @@
-import React from 'react'
-import Formulario from "./componentes/Formulario/Formulario";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+import LoginPrueba from "./components/LoginPrueba";
+import ProcesoPrueba from "./components/ProcesosPrueba";
 
 function App() {
   return (
-    <React.StrictMode>
-      <Formulario />
-    </React.StrictMode>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPrueba/>}/>
+          <Route path="/home" element={<ProcesoPrueba/>}/>
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
