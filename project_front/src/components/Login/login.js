@@ -13,13 +13,18 @@ const login = () => {
                 <h1 className={style.titulo}>Iniciar sesión</h1>
 
                 <h1 className={style.titlo2}>Usuario</h1>
-                {/* <i class="fa fa-user icon"></i> */}
+
                 <div className={style.inputcont}>
+                    <i class="fa fa-user icon"></i>
                     <input className={style.input} type="email" placeholder='Usuario' />
                 </div>
 
                 <h1 className={style.titulo2}>Contraseña</h1>
-                <input className={style.input} type="password" />
+
+                <div className={style.inputcont}>
+                    <i class="fa fa-unlock-alt"></i>
+                    <input className={style.input} type="password" placeholder='Password'/>
+                </div>
 
                 <div className={style.wrapper}>
                     <button className={style.button63} role="button">Entrar</button>

@@ -43,19 +43,25 @@
   color: #1E1E1E;
 }
 
-.inputcont {}
+.inputcont {
+  /* border: 1px solid rgba(30, 30, 30, 0.3); */
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 30px;
+  width: 330px;
+  height: 60px;
+  text-align: center;
+  margin: 0px auto;
+}
 
 .input {
   margin-top: 1px;
   margin-bottom: 30px;
   box-sizing: border-box;
-  width: 330px;
-  height: 60px;
-
-
-  background: #FFFFFF;
-  border: 1px solid rgba(30, 30, 30, 0.3);
-  border-radius: 30px;
+  width: 280px;
+  height: 58px;
+  outline: none; 
+  border: 0px solid rgba(30, 30, 30, 0.3);
+  padding-left: 10px;
 }
 
 .wrapper {
@@ -69,6 +75,7 @@
 
 /* CSS */
 .button63 {
+  margin-top: 50px;
   align-items: center;
   background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   border: 0;
