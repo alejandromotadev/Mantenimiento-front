@@ -36,10 +36,9 @@ const Formulario = () => {
 					</div>
 					<div>
 						<h3>Participantes: </h3>
-						<input
-							className={Style.styleInput}
-							placeholder="Participantes"
-						></input>
+						<select name="participantes" id="participantes" className={Style.styleSelect}>
+							<option value="rol">Rol</option>
+						</select>
 					</div>
 					<div>
 						<h3>Proceso relacionado: </h3>
