@@ -39,7 +39,6 @@
   line-height: 60px;
   /* identical to box height */
 
-
   color: #1E1E1E;
 }
 
@@ -84,7 +83,7 @@
   box-sizing: border-box;
   color: #FFFFFF;
   display: flex;
-  font-family: Phantomsans, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 20px;
   justify-content: center;
   line-height: 1em;
