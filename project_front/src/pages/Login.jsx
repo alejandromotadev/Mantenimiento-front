@@ -19,7 +19,7 @@ const Login = () => {
 				.then(res =>{
 					console.log(res.data);
 					localStorage.setItem('token',res.data.access_token)
-					navigate('/proceso')
+					navigate('/proceso/2')
 				})
 				.catch(error => alert(error));
 			}else{

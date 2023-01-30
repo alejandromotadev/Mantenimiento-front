@@ -28,6 +28,16 @@ img {
   border-radius: 10px;
   padding-left: 2rem;
 }
+
+.styleSelect{
+  width: 440px;
+  height: 50px;
+  border: 1px solid rgba(30, 30, 30, 0.3);
+  border-radius: 10px;
+  padding-left: 2rem;
+  background: #ffffff;
+}
+
 tr{
   display: flex;
   flex-direction: row;
