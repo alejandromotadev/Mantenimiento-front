@@ -11,8 +11,20 @@ img {
 
 .multi_select{
   width: 440px;
-  border-color: blue;
 }
+
+.rmsc {
+  --rmsc-main: 1px solid rgba(30, 30, 30, 0.3) !important; 
+  --rmsc-hover: #f1f3f5;
+  --rmsc-selected: #e2e6ea; 
+  --rmsc-border: #ccc;
+  --rmsc-gray: #aaa;
+  --rmsc-bg: #fff;
+  --rmsc-p: 10px; /* Spacing */
+  --rmsc-radius: 10px !important; /* Radius */
+  --rmsc-h: 50px !important; /* Height */
+}
+
 .formWrapper {
   display: flex;
   margin: auto;

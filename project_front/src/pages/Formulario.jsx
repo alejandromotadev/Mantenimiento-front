@@ -67,6 +67,7 @@ const Formulario = () => {
           <div className={Style.multi_select}>
             <h3>Participantes: </h3>
             <MultiSelect
+				className={Style.rmsc}
               options={options}
               showCheckbox
               value={selected}
