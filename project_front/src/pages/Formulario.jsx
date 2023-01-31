@@ -14,11 +14,10 @@ const Formulario = () => {
   const [procesoRelacionado, setProcesoRelacionado] = useState(null);
   const { faseId } = useParams();
   //opciones para participantes con multiselect
-
   const options = [
     { label: "Participante 1", value: 1 },
     { label: "Participante 2", value: 2 },
-	{ label: "Participante 3", value: 3 },
+    { label: "Participante 3", value: 3 },
   ];
   const [selected, setSelected] = useState([]);
 
@@ -65,13 +64,19 @@ const Formulario = () => {
               </option>
             </select>
           </div>
-          <div>
+          <div className={Style.multi_select}>
             <h3>Participantes: </h3>
             <MultiSelect
               options={options}
               showCheckbox
               value={selected}
               onChange={setSelected}
+              overrideStrings={{
+                selectAll: "Escoger todos los participantes",
+                search: "Buscar participante",
+                allItemsAreSelected: "Todos los participantes",
+                selectSomeItems: "Selecciona a los participantes"
+              }}
             />
           </div>
           <div>
@@ -81,9 +86,7 @@ const Formulario = () => {
               placeholder="Proceso relacionado"
             ></input>
           </div>
-          <div>
-            <table></table>
-          </div>
+          <div></div>
           <div>
             <h3>Evidencia de entrada</h3>
             <table>
