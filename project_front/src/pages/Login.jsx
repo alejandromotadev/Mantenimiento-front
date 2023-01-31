@@ -1,7 +1,16 @@
 import Style from "./Login.module.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+
 
 const Login = () => {
+	const [passwordShown, setPasswordShown] = useState(false);
+	const togglePassword = () => {
+		// When the handler is invoked
+		// inverse the boolean state of passwordShown
+		setPasswordShown(!passwordShown);
+	  };
 	return (
 		<div className={Style.main}>
 			<div className={Style.block}>
@@ -24,9 +33,12 @@ const Login = () => {
 					<i class="fa fa-unlock-alt"></i>
 					<input
 						className={Style.input}
-						type="password"
+						type={passwordShown ? "text" : "password"}
 						placeholder="Password"
+						id="contrasenia"
 					/>
+					<input type="checkbox" onClick={togglePassword}></input>
+					
 				</div>
 
 				<div className={Style.wrapper}>

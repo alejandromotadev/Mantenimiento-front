@@ -55,6 +55,7 @@
 .input {
   margin-top: 1px;
   margin-bottom: 30px;
+  margin-left: 11px;
   box-sizing: border-box;
   width: 280px;
   height: 58px;
@@ -68,13 +69,14 @@
   height: 60px;
   display: flex;
   align-items: center;
+  margin-top: 50px;
   justify-content: center;
 }
 
 
 /* CSS */
 .button63 {
-  margin-top: 50px;
+  
   align-items: center;
   background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   border: 0;
