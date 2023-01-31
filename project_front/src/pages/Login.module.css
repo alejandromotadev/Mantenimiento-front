@@ -32,8 +32,7 @@
 .titulo {
   padding-top: 60px;
   padding-bottom: 30px;
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
+  font-family: 'Poppins';
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
@@ -44,7 +43,7 @@
 
 .inputcont {
   /* border: 1px solid rgba(30, 30, 30, 0.3); */
-  border: 1px solid rgba(0, 0, 0, 1);
+  border: 1px solid rgba(30, 30, 30, 0.3);
   border-radius: 30px;
   width: 330px;
   height: 60px;
@@ -59,7 +58,7 @@
   width: 280px;
   height: 58px;
   outline: none; 
-  border: 0px solid rgba(30, 30, 30, 0.3);
+  border:none;
   padding-left: 10px;
 }
 
@@ -74,22 +73,23 @@
 
 /* CSS */
 .button63 {
-  margin-top: 50px;
+  margin-top: 90px;
   align-items: center;
-  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  background: linear-gradient(90deg, #0085FF -21.97%, #00E0FF 113.38%);
   border: 0;
-  border-radius: 8px;
+  border-radius: 30px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #FFFFFF;
   display: flex;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
+  font-weight: 700;
   font-size: 20px;
   justify-content: center;
   line-height: 1em;
   max-width: 100%;
   min-width: 140px;
-  padding: 19px 24px;
+  padding: 25px 50px;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
@@ -113,9 +113,9 @@
 .titulo2 {
   margin-top: 15px;
   margin-bottom: 0px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
   line-height: 60px;
   /* identical to box height */

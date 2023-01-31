@@ -10,6 +10,7 @@ img {
 }
 
 .formWrapper {
+  font-family: 'Poppins';
   display: flex;
   margin: auto;
   padding-left: 5rem;
@@ -38,12 +39,32 @@ img {
   background: #ffffff;
 }
 
+.btnContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.btnSubmit{
+  color: white;
+  font-family: 'Poppins';
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  background: linear-gradient(90deg, #00B75F -21.97%, #05FF00 113.38%);
+  border-radius: 30px;
+  border: none;
+  padding: 20px 60px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
 tr{
   display: flex;
   flex-direction: row;
 }
 
 input[type="file"]::file-selector-button {
+  font-family: 'Poppins';
   display: flex;
   border: none;
   background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);

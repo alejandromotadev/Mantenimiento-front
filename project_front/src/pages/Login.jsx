@@ -9,8 +9,8 @@ const Login = () => {
 	const navigate = useNavigate()
 
 	const login = async () => {
-		if (username !== null) {
-			if(password !==null) {
+		if (username !== null && username!== "") {
+			if(password !==null && password!== "") {
 				let data = {
 					"username" : username,
 					"password" : password
@@ -19,14 +19,17 @@ const Login = () => {
 				.then(res =>{
 					console.log(res.data);
 					localStorage.setItem('token',res.data.access_token)
+					alert("Inicio exitoso")
 					navigate('/proceso/2')
 				})
-				.catch(error => alert(error));
+				.catch(error => {
+					alert(error.response.data.non_field_errors)
+				});
 			}else{
-				console.log("No password provided")
+				alert("No password provided")
 			}
 		} else {
-			console.log("No username provided");
+			alert("No username provided");
 		}
 	};
 
@@ -35,8 +38,7 @@ const Login = () => {
 			<div className={Style.block}>
 				<h1 className={Style.titulo}>Iniciar sesión</h1>
 
-				<h1 className={Style.titlo2}>Usuario</h1>
-
+				<p className={Style.titulo2}>Usuario</p>
 				<div className={Style.inputcont}>
 					<i className="fa fa-user icon"></i>
 					<input
@@ -48,14 +50,13 @@ const Login = () => {
 					/>
 				</div>
 
-				<h1 className={Style.titulo2}>Contraseña</h1>
-
+				<p className={Style.titulo2}>Contraseña</p>
 				<div className={Style.inputcont}>
 					<i className="fa fa-unlock-alt"></i>
 					<input
 						className={Style.input}
 						type="password"
-						placeholder="Password"
+						placeholder="Contraseña"
 						onChange={(e) => setPassword(e.target.value)}
 						onBlur={(e) => setPassword(e.target.value)}
 					/>
