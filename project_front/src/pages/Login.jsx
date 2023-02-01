@@ -2,11 +2,21 @@ import Style from "./Login.module.css";
 import { axiosInstance } from "../services/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
 	const [username, setUsername] = useState(null);
 	const [password, setPassword] = useState(null);
+	const [passwordShown, setPasswordShown] = useState(false);
+
 	const navigate = useNavigate()
+
+	const togglePassword = () => {
+		// When the handler is invoked
+		// inverse the boolean state of passwordShown
+		setPasswordShown(!passwordShown);
+	};
 
 	const login = async () => {
 		if (username !== null && username!== "") {
@@ -40,7 +50,7 @@ const Login = () => {
 
 				<p className={Style.titulo2}>Usuario</p>
 				<div className={Style.inputcont}>
-					<i className="fa fa-user icon"></i>
+					<FontAwesomeIcon icon={faUser} className={Style.icon} />
 					<input
 						className={Style.input}
 						type="email"
@@ -52,16 +62,16 @@ const Login = () => {
 
 				<p className={Style.titulo2}>Contraseña</p>
 				<div className={Style.inputcont}>
-					<i className="fa fa-unlock-alt"></i>
+					<FontAwesomeIcon icon={passwordShown ? faUnlock : faLock } className={Style.icon} onClick={togglePassword} />
 					<input
 						className={Style.input}
-						type="password"
-						placeholder="Contraseña"
+						type={passwordShown ? "text" : "password"}
+						placeholder="Password"
+						id="contrasenia"
 						onChange={(e) => setPassword(e.target.value)}
 						onBlur={(e) => setPassword(e.target.value)}
 					/>
 				</div>
-
 				<div className={Style.wrapper}>
 					<button className={Style.button63} onClick={login}>Entrar</button>
 				</div>

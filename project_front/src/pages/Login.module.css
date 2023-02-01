@@ -3,22 +3,6 @@
   width: 100%;
 }
 
-.head {
-  width: 100%;
-  height: 10rem;
-}
-
-.headcontent {
-  margin-bottom: 20rem;
-}
-
-.headerimage {
-  width: 15%;
-  height: 15%;
-  float: left;
-  margin-left: 50px;
-  margin-top: 30px;
-}
 .block {
   text-align: center;
   margin: 0px auto;
@@ -32,34 +16,35 @@
 .titulo {
   padding-top: 60px;
   padding-bottom: 30px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
-  /* identical to box height */
-
   color: #1E1E1E;
 }
 
 .inputcont {
-  /* border: 1px solid rgba(30, 30, 30, 0.3); */
-  border: 1px solid rgba(30, 30, 30, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 1);
   border-radius: 30px;
-  width: 330px;
+  width: 360px;
   height: 60px;
   text-align: center;
-  margin: 0px auto;
+  margin: 0px auto;  
 }
 
-.input {
-  margin-top: 1px;
-  margin-bottom: 30px;
+.input{
+  border: none;
   box-sizing: border-box;
-  width: 280px;
-  height: 58px;
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 400;
+  height: 60px;
   outline: none; 
-  border:none;
-  padding-left: 10px;
+  width: 250px;
 }
 
 .wrapper {
@@ -67,40 +52,24 @@
   height: 60px;
   display: flex;
   align-items: center;
+  margin-top: 50px;
   justify-content: center;
 }
 
-
-/* CSS */
 .button63 {
-  margin-top: 90px;
-  align-items: center;
-  background: linear-gradient(90deg, #0085FF -21.97%, #00E0FF 113.38%);
-  border: 0;
+  background-image:  linear-gradient(90deg, #0085FF -21.97%, #00E0FF 113.38%);
   border-radius: 30px;
+  border: 0;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
   color: #FFFFFF;
-  display: flex;
-  font-family: 'Poppins';
-  font-weight: 700;
-  font-size: 20px;
-  justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 25px 50px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
   cursor: pointer;
-}
-
-.button63:active,
-.button63:hover {
-  outline: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1em;
+  width: 140px;
+  height: 70px;
+  padding: 19px 24px;
 }
 
 @media (min-width: 768px) {
@@ -113,19 +82,16 @@
 .titulo2 {
   margin-top: 15px;
   margin-bottom: 0px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 20px;
   line-height: 60px;
-  /* identical to box height */
   color: #1E1E1E;
 }
 
-
-
-.fa {
-  position: absolute;
-  padding: 11px;
-  right: 10px;
+.icon{
+  font-size: 20px;
+  color: rgba(31, 31, 31, 0.4);
+  padding-right: 15px
 }
