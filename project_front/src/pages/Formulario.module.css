@@ -9,10 +9,27 @@ img {
   padding-left: 5rem;
 }
 
+.multi_select {
+  width: 440px;
+}
+
+.rmsc {
+  --rmsc-main: 1px solid rgba(30, 30, 30, 0.3) !important;
+  --rmsc-hover: #f1f3f5;
+  --rmsc-selected: #e2e6ea;
+  --rmsc-border: #ccc;
+  --rmsc-gray: #aaa;
+  --rmsc-bg: #fff;
+  --rmsc-p: 10px; /* Spacing */
+  --rmsc-radius: 10px !important; /* Radius */
+  --rmsc-h: 50px !important; /* Height */
+}
+
 .formWrapper {
   font-family: 'Poppins';
   display: flex;
   margin: auto;
+  margin-bottom: 2rem;
   padding-left: 5rem;
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -30,13 +47,26 @@ img {
   padding-left: 2rem;
 }
 
-.styleSelect{
+.styleSelect {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
   width: 440px;
   height: 50px;
   border: 1px solid rgba(30, 30, 30, 0.3);
   border-radius: 10px;
   padding-left: 2rem;
+  padding-right: 15px;
   background: #ffffff;
+  color: gray;
+  background-image: url(../assets/drop-down-arrow.png);
+  background-repeat: no-repeat;
+  background-position: calc(96%)center;
+  background-size: 15px;
+}
+.styleSelect:focus{
+  cursor: pointer; 
 }
 
 .btnContainer{
@@ -63,9 +93,13 @@ tr{
   flex-direction: row;
 }
 
+input[type="file"] {
+  width: 440px;
+}
 input[type="file"]::file-selector-button {
   font-family: 'Poppins';
   display: flex;
+  margin-left: 15rem;
   border: none;
   background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
   border-radius: 20px;

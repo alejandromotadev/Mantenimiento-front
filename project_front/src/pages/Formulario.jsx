@@ -1,7 +1,9 @@
 import { useState } from "react";
+
 import Style from "./Formulario.module.css";
 import { axiosInstance } from "../services/axios";
 import { useParams } from "react-router-dom";
+import { MultiSelect } from "react-multi-select-component";
 
 const Formulario = () => {
 	const [roles, setRoles] = useState([])
@@ -19,6 +21,14 @@ const Formulario = () => {
 	const [documento, setDocumento] = useState(null)
 
 	const {faseId} = useParams()
+
+	//opciones para participantes con multiselect
+	const options = [
+		{ label: "Participante 1", value: 1 },
+		{ label: "Participante 2", value: 2 },
+		{ label: "Participante 3", value: 3 },
+	];
+	const [selected, setSelected] = useState([]);
 
 	const postProccess = async () => {
 		let formData = new FormData();
@@ -122,9 +132,21 @@ const Formulario = () => {
 							onBlur={(e) => setCategoria(e.target.value)}
 						></input>
 					</div>
-					<div>
-						{/* <h3>Participantes: </h3> */}
-						{/* aca va el dropdown */}
+					<div className={Style.multi_select}>
+						<h3>Participantes: </h3>
+						<MultiSelect
+						className={Style.rmsc}
+						options={options}
+						showCheckbox
+						value={selected}
+						onChange={setSelected}
+						overrideStrings={{
+							selectAll: "Escoger todos los participantes",
+							search: "Buscar participante",
+							allItemsAreSelected: "Todos los participantes",
+							selectSomeItems: "Selecciona a los participantes",
+						}}
+						/>
 					</div>
 					<div>
 						<h3>Proceso relacionado: </h3>
@@ -175,5 +197,6 @@ const Formulario = () => {
 			</div>
 		</div>
 	);
-};
+}
+
 export default Formulario;

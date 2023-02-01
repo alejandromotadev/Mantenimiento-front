@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@craco/craco": "^7.0.0"
+    "@craco/craco": "^7.0.0",
+    "react-select": "^5.7.0"
   },
   "devDependencies": {
     "electron": "^22.0.3",
