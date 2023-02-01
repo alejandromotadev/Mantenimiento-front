@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Style from "./Formulario.module.css";
 import { axiosInstance } from "../services/axios";
 import { useParams } from "react-router-dom";
-
-
 
 const Formulario = () => {
 	const [roles, setRoles] = useState([])
@@ -21,10 +19,6 @@ const Formulario = () => {
 	const [documento, setDocumento] = useState(null)
 
 	const {faseId} = useParams()
-
-	// const getRoles = async () => {
-	// 	await axiosInstance.get('/user/')
-	// }
 
 	const postProccess = async () => {
 		let formData = new FormData();
