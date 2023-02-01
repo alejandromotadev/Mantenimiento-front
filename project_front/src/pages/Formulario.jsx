@@ -59,15 +59,13 @@ const Formulario = () => {
               className={Style.styleSelect}
             >
               <option value="rol1">Ingeniero de requerimientos</option>
-              <option value="rol2" disabled>
-                Product Owner
-              </option>
+              <option value="rol2">Product Owner</option>
             </select>
           </div>
           <div className={Style.multi_select}>
             <h3>Participantes: </h3>
             <MultiSelect
-				className={Style.rmsc}
+              className={Style.rmsc}
               options={options}
               showCheckbox
               value={selected}
@@ -76,7 +74,7 @@ const Formulario = () => {
                 selectAll: "Escoger todos los participantes",
                 search: "Buscar participante",
                 allItemsAreSelected: "Todos los participantes",
-                selectSomeItems: "Selecciona a los participantes"
+                selectSomeItems: "Selecciona a los participantes",
               }}
             />
           </div>

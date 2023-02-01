@@ -7,16 +7,16 @@ img {
   height: 25%;
   padding-top: 40px;
   padding-left: 5rem;
-} 
+}
 
-.multi_select{
+.multi_select {
   width: 440px;
 }
 
 .rmsc {
-  --rmsc-main: 1px solid rgba(30, 30, 30, 0.3) !important; 
+  --rmsc-main: 1px solid rgba(30, 30, 30, 0.3) !important;
   --rmsc-hover: #f1f3f5;
-  --rmsc-selected: #e2e6ea; 
+  --rmsc-selected: #e2e6ea;
   --rmsc-border: #ccc;
   --rmsc-gray: #aaa;
   --rmsc-bg: #fff;
@@ -46,22 +46,34 @@ img {
   padding-left: 2rem;
 }
 
-.styleSelect{
+.styleSelect {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
   width: 440px;
   height: 50px;
   border: 1px solid rgba(30, 30, 30, 0.3);
   border-radius: 10px;
   padding-left: 2rem;
+  padding-right: 15px;
   background: #ffffff;
+  color: gray;
+  background-image: url(../assets/drop-down-arrow.png);
+  background-repeat: no-repeat;
+  background-position: calc(96%)center;
+  background-size: 15px;
+}
+.styleSelect:focus{
+  cursor: pointer; 
 }
 
-tr{
+tr {
   display: flex;
   flex-direction: row;
-  
 }
 
-input[type="file"]{
+input[type="file"] {
   width: 440px;
 }
 input[type="file"]::file-selector-button {
