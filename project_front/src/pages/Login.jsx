@@ -1,7 +1,8 @@
 import Style from "./Login.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
 
 
 const Login = () => {
@@ -10,7 +11,7 @@ const Login = () => {
 		// When the handler is invoked
 		// inverse the boolean state of passwordShown
 		setPasswordShown(!passwordShown);
-	  };
+	};
 	return (
 		<div className={Style.main}>
 			<div className={Style.block}>
@@ -19,7 +20,7 @@ const Login = () => {
 				<h1 className={Style.titlo2}>Usuario</h1>
 
 				<div className={Style.inputcont}>
-					<i class="fa fa-user icon"></i>
+					<FontAwesomeIcon icon={faUser} className={Style.icon} />
 					<input
 						className={Style.input}
 						type="email"
@@ -30,17 +31,14 @@ const Login = () => {
 				<h1 className={Style.titulo2}>Contraseña</h1>
 
 				<div className={Style.inputcont}>
-					<i class="fa fa-unlock-alt"></i>
+					<FontAwesomeIcon icon={passwordShown ? faUnlock : faLock } className={Style.icon} onClick={togglePassword} />
 					<input
 						className={Style.input}
 						type={passwordShown ? "text" : "password"}
 						placeholder="Password"
 						id="contrasenia"
 					/>
-					<input type="checkbox" onClick={togglePassword}></input>
-					
 				</div>
-
 				<div className={Style.wrapper}>
 					<Link to="/proceso">
 						{" "}
