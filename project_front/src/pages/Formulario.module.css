@@ -90,16 +90,27 @@ img {
 
 tr{
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  align-items: center;
 }
 
-input[type="file"] {
-  width: 440px;
+.file input{
+  display: none;
 }
+
+.file label{
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Poppins';
+  display: block;
+  background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
 input[type="file"]::file-selector-button {
   font-family: 'Poppins';
-  display: flex;
-  margin-left: 15rem;
   border: none;
   background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
   border-radius: 20px;

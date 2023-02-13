@@ -18,7 +18,10 @@ const Formulario = () => {
 	const [procesoRelacionado, setProcesoRelacionado] = useState(null)
 	const [frecuencia, setFrecuencia] = useState(null)
 	//Documentos
-	const [documento, setDocumento] = useState(null)
+	const [documento, setDocumento] = useState()
+	//Tabla evidencias
+	const [evidenciaEntrada, setEvidenciaEntrada] = useState([])
+	// const [evidenciaSalida, setevidenciaSalida] = useState([{"name":"Sin archivos seleccionados"}])
 
 	const {faseId} = useParams()
 
@@ -57,6 +60,12 @@ const Formulario = () => {
 			
 		})
 		.catch((err) => {console.log(err); });
+	}
+
+	const selectDocs = ({target}) => {
+		if(target.id.includes("Entrada")){
+			setEvidenciaEntrada([...target.files])
+		}
 	}
 
 	const onSubmit = (e) => {
@@ -160,26 +169,66 @@ const Formulario = () => {
 					<div>
 						<h3>Evidencia de entrada</h3>
 						<table>
+							<tbody>
+							{evidenciaEntrada.length >= 1 ? evidenciaEntrada.map((ev,index) => {
+								return(
+									<tr key={index}>
+										<td>
+											<b>Evidencia {index+1}</b>
+										</td>
+										<td>
+											{ev.name}
+										</td>
+										<td className={Style.file}>
+											<label htmlFor={"docEntrada" + index}>Elegir archivo</label>
+											<input multiple id={"docEntrada" + index} type="file" accept=".pdf" onChange={selectDocs}></input>
+										</td>
+									</tr>
+								)
+							}) : 
+								<tr>
+									<td>
+										Evidencia 1
+									</td>
+									<td>
+										Sin archivos seleccionados
+									</td>
+									<td className={Style.file}>
+										<label htmlFor="docEntrada">Elegir archivo</label>
+										<input multiple id="docEntrada" type="file" accept=".pdf" onChange={selectDocs}></input>
+									</td>
+								</tr>
+							}
+							</tbody>
+						</table> 
+							
+
+						{/* <table>
+							
 							<tr>
 								<td>
-									<label>Evidencia</label>
+									<b>Evidencia 1</b>
 								</td>
 								<td>
-									<input type="file" accept=".pdf" id="docEntrada" onChange={(e) => setDocumento(e.target.files[0])}></input>
+									<p>Sin archivos seleccionado</p>
+								</td>
+								<td className={Style.file}>
+									<label for="docEntrada">Elegir archivo</label>
+									<input id="docEntrada" type="file" accept=".pdf" onChange={(e) => setDocumento(e.target.files[0])}></input>
 								</td>
 							</tr>
-						</table>
+						</table> */}
 						<h3>Evidencia de salida</h3>
-						<table>
+						{/* <table>
 							<tr>
 								<td>
-									<label>Evidencia</label>
+									<label>Evidencia 1</label>
 								</td>
 								<td>
 									<input type="file" accept=".pdf" id="docSalida"></input>
 								</td>
 							</tr>
-						</table>
+						</table> */}
 					</div>
 					<div>
 						<h3>Frecuencia: </h3>

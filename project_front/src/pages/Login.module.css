@@ -84,7 +84,7 @@
   margin-bottom: 0px;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
   line-height: 60px;
   color: #1E1E1E;
@@ -94,4 +94,8 @@
   font-size: 20px;
   color: rgba(31, 31, 31, 0.4);
   padding-right: 15px
+}
+
+#pass{
+  cursor: pointer;
 }

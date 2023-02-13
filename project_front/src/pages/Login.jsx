@@ -62,7 +62,7 @@ const Login = () => {
 
 				<p className={Style.titulo2}>Contraseña</p>
 				<div className={Style.inputcont}>
-					<FontAwesomeIcon icon={passwordShown ? faUnlock : faLock } className={Style.icon} onClick={togglePassword} />
+					<FontAwesomeIcon icon={passwordShown ? faUnlock : faLock } id={Style.pass} className={Style.icon} onClick={togglePassword} />
 					<input
 						className={Style.input}
 						type={passwordShown ? "text" : "password"}
