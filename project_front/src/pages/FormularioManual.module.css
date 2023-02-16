@@ -9,9 +9,6 @@ img {
   padding-left: 5rem;
 }
 
-.multi_select {
-  width: 440px;
-}
 
 .rmsc {
   --rmsc-main: 1px solid rgba(30, 30, 30, 0.3) !important;
@@ -26,7 +23,7 @@ img {
 }
 
 .formWrapper {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   display: flex;
   margin: auto;
   margin-bottom: 2rem;
@@ -62,25 +59,25 @@ img {
   color: gray;
   background-image: url(../assets/drop-down-arrow.png);
   background-repeat: no-repeat;
-  background-position: calc(96%)center;
+  background-position: calc(96%) center;
   background-size: 15px;
 }
-.styleSelect:focus{
-  cursor: pointer; 
+.styleSelect:focus {
+  cursor: pointer;
 }
 
-.btnContainer{
+.btnContainer {
   display: flex;
   justify-content: center;
 }
 
-.btnSubmit{
+.btnSubmit {
   color: white;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: bold;
   font-size: 24px;
   line-height: 36px;
-  background: linear-gradient(90deg, #00B75F -21.97%, #05FF00 113.38%);
+  background: linear-gradient(90deg, #00b75f -21.97%, #05ff00 113.38%);
   border-radius: 30px;
   border: none;
   padding: 20px 60px;
@@ -88,7 +85,23 @@ img {
   cursor: pointer;
 }
 
-tr{
+.flexbox {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flexbox > div {
+  width: 50%;
+  padding: 10px;
+  background: #fff;
+}
+
+.flexbox > div:first-child {
+  margin-right: 10px;
+}
+
+tr {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -96,17 +109,17 @@ tr{
 }
 
 td{
-  margin-right: 10px;
+  margin: 0 10px 0 0;
 }
 
-.file input{
+.file input {
   display: none;
 }
 
-.file label{
+.file label {
   color: #fff;
   cursor: pointer;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   display: block;
   background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
   border-radius: 20px;
@@ -114,7 +127,7 @@ td{
 }
 
 input[type="file"]::file-selector-button {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   border: none;
   background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
   border-radius: 20px;
