@@ -3,9 +3,9 @@ import { useState } from "react";
 import Style from "./FormularioManual.module.css";
 import { axiosInstance } from "../services/axios";
 
-const FormularioManual = () => {
+const FormularioManual = ({nombre}) => {
   //Datos
-  const [identificador, setIdentificador] = useState(null);
+  const [identificador, setIdentificador] = useState(nombre);
   const [historia, setHistoria] = useState(null);
   const [alcance, setAlcance] = useState(null);
   const [vision, setVision] = useState(null);
@@ -13,10 +13,10 @@ const FormularioManual = () => {
   const [politicas, setPoliticas] = useState(null);
 
   //Documentos
-  const [organizacionEmpresa, setOrganizacionEmpresa] = useState(null);
-  const [organigrama, setOrganigrama] = useState(null);
-  const [vocabulario, setVocabulario] = useState(null);
-  const [funciones, setFunciones] = useState(null);
+  const [organizacionEmpresa, setOrganizacionEmpresa] = useState([]);
+  const [organigrama, setOrganigrama] = useState([]);
+  const [vocabulario, setVocabulario] = useState([]);
+  const [funciones, setFunciones] = useState([]);
 
   const postManual = async () => {
     let formData = new FormData();
@@ -28,16 +28,16 @@ const FormularioManual = () => {
     formData.append("mision", mision);
     formData.append("organizacion_empresa", organizacionEmpresa);
     formData.append("organigrama", organigrama);
-    formData.append("categoria", vocabulario);
+    formData.append("vocabulario", vocabulario);
     formData.append("funciones_puestos", funciones);
     formData.append("politicas", politicas);
 
-    console.log(formData)
+    console.log(formData);
     await axiosInstance
       .post("manual/list/", formData, {
         headers: {
           "Content-type": "multipart/form-data",
-          Authorization: "Token" + localStorage.getItem("token"),
+          "Authorization": "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((result) => {
@@ -58,18 +58,18 @@ const FormularioManual = () => {
       <div className={Style.formWrapper}>
         <form onSubmit={onSubmit}>
           <div>
-            <h1>Manual</h1>
+            <h1>Creación de manual de calidad</h1>
           </div>
           <div>
             {identificador ? (
-              <h3>
-                Identificador: <b>{identificador}</b>
-              </h3>
+              <h2>
+                <b>{identificador}</b>
+              </h2>
             ) : (
               <div>
-                <h3>
-                  Identificador: <b>__.__.__.__</b>
-                </h3>
+                <h2>
+                  Nombre: <b>_________</b>
+                </h2>
                 <input
                   className={Style.styleInput}
                   placeholder="Identificador"
@@ -116,22 +116,28 @@ const FormularioManual = () => {
             ></input>
           </div>
           <div>
-            <h3>Organizacion de la empresa:</h3>
+            <h3>Organización de la empresa:</h3>
             <table>
               <tbody>
-                {organizacionEmpresa ? (
-                  <tr>
-                    <td>{organizacionEmpresa.name}</td>
-                    <td className={Style.file}>
-                      <label htmlFor={"docOrganizacion"}>Elegir archivo</label>
-                      <input
-                        id={"docOrganizacion"}
-                        type="file"
-                        accept=".pdf"
-                      ></input>
-                    </td>
-                  </tr>
-                ) : (
+                {organizacionEmpresa.length >= 1 ? (
+                  organizacionEmpresa.map((ev, index) => {
+                    return (
+                      <tr key={ev.number}>
+                        <td>{ev.name}</td>
+                        <td className={Style.file}>
+                          <label htmlFor={"docOrganizacion"}>
+                            Elegir archivo
+                          </label>
+                          <input
+                            id={"docOrganizacion"}
+                            type="file"
+                            accept=".pdf"
+                          ></input>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : 
                   <tr>
                     <td>Sin archivos seleccionados</td>
                     <td className={Style.file}>
@@ -141,12 +147,12 @@ const FormularioManual = () => {
                         type="file"
                         accept=".pdf"
                         onChange={({ target }) =>
-                          setOrganizacionEmpresa(...target.files)
+                          setOrganizacionEmpresa([...target.files])
                         }
                       ></input>
                     </td>
                   </tr>
-                )}
+                }
               </tbody>
             </table>
           </div>
@@ -154,19 +160,25 @@ const FormularioManual = () => {
             <h3>Organigrama:</h3>
             <table>
               <tbody>
-                {organigrama ? (
-                  <tr>
-                    <td>{organigrama.name}</td>
-                    <td className={Style.file}>
-                      <label htmlFor={"docOrganigrama"}>Elegir archivo</label>
-                      <input
-                        id={"docOrganigrama"}
-                        type="file"
-                        accept=".pdf"
-                      ></input>
-                    </td>
-                  </tr>
-                ) : (
+                {organigrama.length >= 1 ? (
+                  organigrama.map((ev, index) => {
+                    return (
+                      <tr key={ev.number}>
+                        <td>{ev.name}</td>
+                        <td className={Style.file}>
+                          <label htmlFor={"docOrganigrama"}>
+                            Elegir archivo
+                          </label>
+                          <input
+                            id={"docOrganigrama"}
+                            type="file"
+                            accept=".pdf"
+                          ></input>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : 
                   <tr>
                     <td>Sin archivos seleccionados</td>
                     <td className={Style.file}>
@@ -176,12 +188,12 @@ const FormularioManual = () => {
                         type="file"
                         accept=".pdf"
                         onChange={({ target }) =>
-                          setOrganigrama(...target.files)
+                          setOrganigrama([...target.files])
                         }
                       ></input>
                     </td>
                   </tr>
-                )}
+                }
               </tbody>
             </table>
           </div>
@@ -189,19 +201,25 @@ const FormularioManual = () => {
             <h3>Vocabulario:</h3>
             <table>
               <tbody>
-                {vocabulario ? (
-                  <tr>
-                    <td>{vocabulario.name}</td>
-                    <td className={Style.file}>
-                      <label htmlFor={"docVocabulario"}>Elegir archivo</label>
-                      <input
-                        id={"docVocabulario"}
-                        type="file"
-                        accept=".pdf"
-                      ></input>
-                    </td>
-                  </tr>
-                ) : (
+                {vocabulario.length >= 1 ? (
+                  vocabulario.map((ev, index) => {
+                    return (
+                      <tr key={ev.number}>
+                        <td>{ev.name}</td>
+                        <td className={Style.file}>
+                          <label htmlFor={"docVocabulario"}>
+                            Elegir archivo
+                          </label>
+                          <input
+                            id={"docVocabulario"}
+                            type="file"
+                            accept=".pdf"
+                          ></input>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : 
                   <tr>
                     <td>Sin archivos seleccionados</td>
                     <td className={Style.file}>
@@ -211,12 +229,12 @@ const FormularioManual = () => {
                         type="file"
                         accept=".pdf"
                         onChange={({ target }) =>
-                          setVocabulario(...target.files)
+                          setVocabulario([...target.files])
                         }
                       ></input>
                     </td>
                   </tr>
-                )}
+                }
               </tbody>
             </table>
           </div>
@@ -224,19 +242,25 @@ const FormularioManual = () => {
             <h3>Funciones de los puestos:</h3>
             <table>
               <tbody>
-                {funciones ? (
-                  <tr>
-                    <td>{funciones.name}</td>
-                    <td className={Style.file}>
-                      <label htmlFor={"docFunciones"}>Elegir archivo</label>
-                      <input
-                        id={"docFunciones"}
-                        type="file"
-                        accept=".pdf"
-                      ></input>
-                    </td>
-                  </tr>
-                ) : (
+                {funciones.length >= 1 ? (
+                  funciones.map((ev, index) => {
+                    return (
+                      <tr key={ev.number}>
+                        <td>{ev.name}</td>
+                        <td className={Style.file}>
+                          <label htmlFor={"docFunciones"}>
+                            Elegir archivo
+                          </label>
+                          <input
+                            id={"docFunciones"}
+                            type="file"
+                            accept=".pdf"
+                          ></input>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : 
                   <tr>
                     <td>Sin archivos seleccionados</td>
                     <td className={Style.file}>
@@ -245,11 +269,13 @@ const FormularioManual = () => {
                         id="docFunciones"
                         type="file"
                         accept=".pdf"
-                        onChange={({ target }) => setFunciones(...target.files)}
+                        onChange={({ target }) =>
+                          setFunciones([...target.files])
+                        }
                       ></input>
                     </td>
                   </tr>
-                )}
+                }
               </tbody>
             </table>
           </div>
