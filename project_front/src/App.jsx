@@ -4,6 +4,8 @@ import Nav from "./components/NavBar";
 import Formulario from "./pages/Formulario";
 import Login from "./pages/Login";
 
+import Procesos from "./pages/Procesos";
+
 function App() {
   return (
     <div className="App">
@@ -12,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/proceso/:faseId" element={<Formulario />} />
+          <Route path="/proceso/create" element={<Procesos />} />
         </Routes>
       </Router>
     </div>
