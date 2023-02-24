@@ -33,35 +33,45 @@
   }
 
   .buttongenerate {
-    background-image: linear-gradient(to right, #FF004D 0%, #FF00B8  100%);
+    background-image: linear-gradient(to right, #FF004D 0%, #FF00B8  51%, #FF004D 100%);
     border: none;
     height: 70px;
     width: 70px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 8px;
-    box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
+    box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
     transition: 0.5s;
     background-size: 200% auto;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
 
   .buttongenerate:hover {
     background-position: right center;
     text-decoration: none;
   }
+ 
 
   .buttoncreate {
-    background-color: white;
+    background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%);
     border: none;
     height: 70px;
     width: 70px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 8px;
-    box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
+    box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
     transition: 0.5s;
+    background-size: 200% auto;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
 
+
   .buttoncreate:hover {
-    filter: brightness(96%);
+    background-position: right center;
+    text-decoration: none;
   }
 
   .buttontext {
