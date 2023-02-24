@@ -37,7 +37,7 @@ const FormularioProceso = () => {
 		console.log(evidenciaEntrada);
 
 		const new_participantes = []
-		for (let i = 0; i <participantes.length; i++) {
+		for (let i = 0; i < participantes.length; i++) {
 			new_participantes.push(participantes[i].value)
 		}
 
@@ -53,29 +53,35 @@ const FormularioProceso = () => {
 		formData.append("proceso_relacionado", procesoRelacionado);
 		formData.append("frecuencia", frecuencia);
 		formData.append("status", estado)
-		formData.append("metrica", metricas[0])
+		if (metricas.length !== 0) {
+			formData.append("metrica", metricas[0])
+		}
 		
 		let index = 0;
-		for (let i = 0; i <evidenciaEntrada.length; i++) {
-			let proceso_media = "proceso_media["+[i]+"]"
-			formData.append(proceso_media+"file", evidenciaEntrada[i])
-			formData.append(proceso_media+"nombre", evidenciaEntrada[i].name)
-			formData.append(proceso_media+"tipo", "Entrada")
-			index = i
+		if (evidenciaEntrada.length !== 0) {
+			for (let i = 0; i < evidenciaEntrada.length; i++) {
+				let proceso_media = "proceso_media[" + [i] + "]"
+				formData.append(proceso_media + "file", evidenciaEntrada[i])
+				formData.append(proceso_media + "nombre", evidenciaEntrada[i].name)
+				formData.append(proceso_media + "tipo", "Entrada")
+				index += 1
+			}
 		}
 
-		for (let i = 0; i <evidenciaSalida.length; i++) {
-			index+=1
-			let proceso_media = "proceso_media["+[index]+"]"
-			formData.append(proceso_media+"file", evidenciaSalida[i])
-			formData.append(proceso_media+"nombre", evidenciaSalida[i].name)
-			formData.append(proceso_media+"tipo", "Salida")
+		if (evidenciaSalida.length !== 0) {
+			for (let i = 0; i < evidenciaSalida.length; i++) {
+				index += 1
+				let proceso_media = "proceso_media[" + [index] + "]"
+				formData.append(proceso_media + "file", evidenciaSalida[i])
+				formData.append(proceso_media + "nombre", evidenciaSalida[i].name)
+				formData.append(proceso_media + "tipo", "Salida")
+			}
 		}
 
 		await axiosInstance.post("proceso/crear/", formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
-				'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3MTk5MTc1LCJpYXQiOjE2NzcxOTgzNjQsImp0aSI6IjJiZmQ5NTg0NmM2MzRkZDZhMDg5NzhlMzQwYmZlZmExIiwidXNlcl9pZCI6MX0._x4v3t2Fo88OmwFGCx7YDKONFhWx3JTmfcLjFLj4rMo',
+				'Authorization': 'Bearer ' + localStorage.getItem('token')
 			},
 		})
 			.then((result) => {
