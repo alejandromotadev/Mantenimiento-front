@@ -1,10 +1,10 @@
-import { useState } from "react";
-
+import { useEffect, useState } from 'react';
 import Style from "./FormularioManual.module.css";
 import { axiosInstance } from "../services/axios";
 
 const FormularioManual = ({nombre}) => {
   //Datos
+  const [identificadorProyecto, setIdentificadorProyecto] = useState(null);
   const [identificador, setIdentificador] = useState(nombre);
   const [historia, setHistoria] = useState(null);
   const [alcance, setAlcance] = useState(null);
@@ -18,9 +18,27 @@ const FormularioManual = ({nombre}) => {
   const [vocabulario, setVocabulario] = useState([]);
   const [funciones, setFunciones] = useState([]);
 
+  const getProyecto = async() => {
+    await axiosInstance
+    .get("proyecto/list", { 
+      headers: {
+      "Content-type": "multipart/form-data",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+      },
+    })
+    .then((result) => {
+      console.log(result);
+      setIdentificadorProyecto(result[result.length-1].id);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
   const postManual = async () => {
     let formData = new FormData();
 
+    formData.append("id_proyecto", identificadorProyecto);
     formData.append("id_manual", identificador);
     formData.append("historia", historia);
     formData.append("alcance", alcance);
@@ -52,6 +70,10 @@ const FormularioManual = ({nombre}) => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
+
+  // useEffect(() => {
+  //   getProyecto();
+  // }, []);
 
   return (
     <div>
