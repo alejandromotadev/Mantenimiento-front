@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./components/NavBar";
 import Formulario from "./pages/Formulario";
 import Login from "./pages/Login";
+import Proyectos from "./pages/Proyectos";
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <Nav/>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Proyectos />} />
           <Route path="/proceso/:faseId" element={<Formulario />} />
+          <Route path="/proyectos" element={<Formulario />}/>
         </Routes>
       </Router>
     </div>
