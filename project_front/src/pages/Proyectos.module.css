@@ -15,6 +15,7 @@
 
 .titulo {
   margin: 0;
+  margin-right: 5px;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -23,25 +24,41 @@
   color: #636363;
 }
 
+.buttonx {
+  border: none;
+  outline: none;
+  padding: 0;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  float: right;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
   width: fit-content;
+  min-width: fit-content;
   margin-left: auto;
   margin-right: 0;
   align-items: center;
 }
 
 .buttongenerate {
-  background-image: linear-gradient(to right, #FF004D 0%, #FF00B8 100%);
+  background-image: linear-gradient(to right, #FF004D 0%, #FF00B8  51%, #FF004D 100%);
   border: none;
   height: 70px;
   width: 70px;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: 8px;
-  box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
+  box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
   transition: 0.5s;
   background-size: 200% auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .buttongenerate:hover {
@@ -50,18 +67,23 @@
 }
 
 .buttoncreate {
-  background-color: white;
+  background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%);
   border: none;
   height: 70px;
   width: 70px;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: 8px;
-  box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
+  box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
   transition: 0.5s;
+  background-size: 200% auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .buttoncreate:hover {
-  filter: brightness(96%);
+  background-position: right center;
+  text-decoration: none;
 }
 
 .buttontext {
@@ -77,9 +99,18 @@
   margin-top: 0;
 }
 
+.contentbody {
+  display: flex;
+  flex-direction: row;
+}
+
 .iconCard {
-  position: relative;
-  top: 30px;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
 }
 .separator{
@@ -93,16 +124,11 @@
   left: 20px;
 }
 .imgCard {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: flex;
   padding: 0;
   width: 120px;
   height: 120px;
 }
+
 .deleteProject {
   position: relative;
 }
@@ -219,7 +245,8 @@
 .proyectCard {
 
   background-color: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0px 20px -10px;
+
+  box-shadow: 0px 5px 20px rgba(30, 30, 30, 0.4);
   border-radius: 20px;
   width: 200px;
   height: 200px;
@@ -267,7 +294,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  gap: 20px;
+  gap: 40px;
   /* position: relative; */
 
 }
