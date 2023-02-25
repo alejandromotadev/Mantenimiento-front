@@ -1,11 +1,15 @@
 import { useState } from "react";
-
+import React, { useEffect } from 'react'
 import Style from "./Formulario.module.css";
 import { axiosInstance } from "../services/axios";
 import { useParams } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
+import { validateToken } from '../services/verifyToken';
 
 const FormularioProceso = () => {
+	useEffect(() => {
+		getData()
+	}, [])
 	//Proceso
 	const [nombre, setNombre] = useState(null)
 	const [proposito, setProposito] = useState(null)
@@ -25,6 +29,8 @@ const FormularioProceso = () => {
 
 	const { faseId } = useParams()
 
+	const [nombreProceso, setNombreProceso] = useState(null)
+
 	//opciones para participantes con multiselect
 	const options = [
 		{ label: "Participante 1", value: 1 },
@@ -40,17 +46,37 @@ const FormularioProceso = () => {
 		}
 
 		let formData = new FormData();
-		formData.append("nombre", nombre);
 		formData.append("id_proceso", 1);
-		formData.append("descripcion", descripcion);
-		formData.append("proposito", proposito);
-		formData.append("objetivo", objetivo);
-		formData.append("responsable", responsable);
-		formData.append("categoria", categoria);
-		formData.append("participantes", new_participantes);
-		formData.append("proceso_relacionado", procesoRelacionado);
-		formData.append("frecuencia", frecuencia);
-		formData.append("status", estado)
+		if (nombre != null){
+			formData.append("nombre", nombre);
+		}
+		if (descripcion.length != 0){
+			formData.append("descripcion", descripcion);
+		}
+		if (proposito != null){
+			formData.append("proposito", proposito);
+		}
+		if (objetivo.length != 0){
+			formData.append("objetivo", objetivo);
+		}
+		if (responsable != null){
+			formData.append("responsable", responsable);
+		}
+		if (categoria != null){
+			formData.append("categoria", categoria);
+		}
+		if (new_participantes.length != 0){
+			formData.append("participantes", new_participantes);
+		}
+		if (procesoRelacionado != null){
+			formData.append("proceso_relacionado", procesoRelacionado);
+		}
+		if (frecuencia != null){
+			formData.append("frecuencia", frecuencia);
+		}
+		if (estado != null){
+			formData.append("status", estado);
+		}
 		if (metricas.length !== 0) {
 			formData.append("metrica", metricas[0])
 		}
@@ -78,7 +104,7 @@ const FormularioProceso = () => {
 
 		await validateToken();
 
-		await axiosInstance.post("proceso/crear/", formData, {
+		await axiosInstance.patch("proceso/" + localStorage.getItem('proceso_id'), formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
 				'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -89,49 +115,6 @@ const FormularioProceso = () => {
 				alert("Proceso creado");
 			})
 			.catch((err) => { console.log(err); });
-	}
-
-	const validateToken = async () => {
-		console.log("validateToken")
-		let postData = {
-			token: localStorage.getItem('token')
-		}
-
-		await axiosInstance.post('user/token/verify/', postData, {
-			headers: { 'Content-Type': 'application/json' }
-		})
-			.then(async (result) => {
-				console.log(result.data);
-				if (result.detail === "Token is invalid or expired") {
-					await refreshToken();
-				}
-			})
-			.catch(async (err) => {
-				console.log("error post");
-				if (err.response.data.detail === "Token is invalid or expired") {
-					await refreshToken();
-				}
-			})
-	}
-
-	const refreshToken = async () => {
-		console.log("refreshToken")
-		console.log(localStorage.getItem('refresh'))
-		let postData = {
-			refresh: localStorage.getItem('refresh')
-		}
-		await axiosInstance.post('user/token/refresh/', postData, {
-			headers: { 'Content-Type': 'application/json' }
-		})
-			.then((result) => {
-				console.log(result.data);
-				if (result.detail === "Token is invalid or expired") {
-					alert("Access/Token no válido")
-				} else {
-					localStorage.setItem('token', result.data.access)
-				}
-			})
-			.catch((err) => { console.log(err); })
 	}
 
 	const selectDocs = ({ target }) => {
@@ -158,6 +141,19 @@ const FormularioProceso = () => {
 		e.preventDefault();
 	}
 
+	const getData = async () => {
+		await axiosInstance.get("proceso/" + localStorage.getItem('proceso_id'), {
+			headers: {
+				'Authorization': 'Bearer ' + localStorage.getItem('token')
+			},
+		})
+			.then((result) => {
+				console.log(result.data.pay_load);
+				setNombreProceso(result.data.pay_load.nombre);
+			})
+			.catch((err) => { console.log(err); });
+	}
+
 	return (
 		<div>
 			<div className={Style.formWrapper}>
@@ -182,6 +178,7 @@ const FormularioProceso = () => {
 							placeholder="Nombre"
 							onChange={(e) => setNombre(e.target.value)}
 							onBlur={(e) => setNombre(e.target.value)}
+							defaultValue={nombreProceso}
 						></input>
 					</div>
 					<div>

@@ -6,6 +6,7 @@ import greyLogo from "../assets/gray_logo.svg";
 import Mas from "../assets/Mas.svg";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/VentanaModal";
+import { validateToken } from '../services/verifyToken';
 
 const Procesos = () => {
   const navigate = useNavigate()
@@ -18,8 +19,10 @@ const Procesos = () => {
     getDatos()
   }, [])
 
-  function getDatos() {
-    axiosInstance.get('proceso/list/', {
+  async function getDatos() {
+    await validateToken();
+
+    await axiosInstance.get('proceso/list/', {
       headers: {
         "Content-type": "application/json",
         "Authorization": 'Bearer ' + token,
@@ -39,13 +42,32 @@ const Procesos = () => {
       .catch((err) => { console.log(err); });
   }
 
-  function viewProcess(ID) {
+  async function viewProcess(ID) {
     // Se obtiene el id de cada proceso
-    console.log('ID');
+    console.log(ID);
+    await validateToken();
+    localStorage.setItem('proceso_id', ID)
+    navigate('/proceso_form/')
   }
 
-  function navigateProcess() {
-    navigate('/proceso/2')
+  async function navigateProcess() {
+    await validateToken();
+
+    let formData = new FormData();
+		formData.append("nombre", document.getElementById('nombre_proceso_nuevo').value);
+
+    await axiosInstance.post("proceso/crear/", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
+    })
+      .then((result) => {
+        console.log(result.data.id);
+        alert("Proceso creado");
+        viewProcess(result.data.id);
+      })
+      .catch((err) => { console.log(err); });
   }
 
   function handleCheckboxChange(event) {
@@ -118,7 +140,7 @@ const Procesos = () => {
           <Modal title="Nuevo proceso" onClose={CloseModal}>
             <p className={Style.titulo2}>Nombre:</p>
             <div className={Style.inputcont}>
-              <input className={Style.input} />
+              <input className={Style.input} id="nombre_proceso_nuevo"/>
             </div>
             <div className={Style.wrapper}>
               <button className={Style.button63} onClick={navigateProcess}>Entrar</button>
