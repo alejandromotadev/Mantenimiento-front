@@ -8,12 +8,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+
   }
   
   .modal {
     background-color: white;
     border-radius: 20px;
     padding: 40px;
+    z-index: 1000;
+  }
+
+  .centerButton{
+    display: flex;
   }
   
   .modal-close {
@@ -25,5 +32,17 @@
     font-size: 20px;
     cursor: pointer;
     color: rgb(255, 255, 255);
+    z-index: 1000;
+
   }
   
+  .closeModalButton{
+    margin: 0 auto;
+    padding-top: 10px;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight:800;
+    font-size:15px;
+    border: none;
+    background-color: white !important;
+    cursor: pointer;
+  }

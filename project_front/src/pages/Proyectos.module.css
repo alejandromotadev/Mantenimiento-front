@@ -15,20 +15,32 @@
 
 .titulo {
   margin: 0;
+  margin-right: 5px;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 28px;
   line-height: 60px;
   color: #636363;
+}
+
+.buttonx {
+  border: none;
+  outline: none;
   padding: 0;
-  margin-right: 5px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  float: right;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   width: fit-content;
+  min-width: fit-content;
   margin-left: auto;
   margin-right: 0;
   align-items: center;
@@ -82,26 +94,6 @@
   margin-bottom: 15px;
 }
 
-.buttonx {
-  border: none;
-  outline: none;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  margin-left: auto;
-  margin-right: 0;
-  float: right;
-  border-radius: 20px;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  transition: 0.5;
-  width: 25px;
-  height: 25px;
-}
-
-
 .content {
   margin: 5%;
   margin-top: 0;
@@ -110,6 +102,55 @@
 .contentbody {
   display: flex;
   flex-direction: row;
+}
+
+.iconCard {
+  top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.separator{
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  width: 80%;
+  margin: 0 auto;
+  bottom: 40px;
+  left: 20px;
+}
+.imgCard {
+  padding: 0;
+  width: 120px;
+  height: 120px;
+}
+
+.deleteProject {
+  position: relative;
+}
+.deleteProjectButton {
+  position: absolute;
+  top: 5px;
+  left: 155px;
+  z-index: 100;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+}
+
+.svg {
+  width: 100%;
+  /* establece el ancho del SVG como el 100% del ancho del botón */
+  height: auto;
+  /* permite que la altura del SVG se ajuste automáticamente */
 }
 
 .alert {
@@ -203,7 +244,7 @@
 .proyectCard {
 
   background-color: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0px 20px -10px;
+  box-shadow: 0px 5px 20px rgba(30, 30, 30, 0.4);
   border-radius: 20px;
   width: 200px;
   height: 200px;
@@ -212,41 +253,46 @@
 
 }
 
-.bottomCard{
-  /* font-family: 'Poppins', sans-serif;  bottom: 0; */
-  /* left: 0; */
+.bottomCard {
+  
   color: rgba(30, 30, 30, 0.6);
   position: absolute;
   bottom: 0;
-}
-
-.contentCardTitle{
-    font-family: 'Poppins', sans-serif;  bottom: 0;
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    bottom: 10px;
-    font-weight: bold;
-    /* right: px; */
-    left: 20px;
-}
-
-.contentCardStatus{
-    width: 20px;
-    height: 20px;
-    background-color: #FFB800;
-    position: absolute;
-    bottom: 0;
-    left: 10em;
-    bottom: 10px;
-    border-radius: 2px;
 
 }
+
+.contentCardTitle {
+  
+  font-family: 'Poppins', sans-serif;
+  bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  bottom: 10px;
+  font-weight:500;
+  font-size:medium;;
+  /* right: px; */
+  left: 20px;
+}
+
+.contentCardStatus {
+  
+  width: 20px;
+  height: 20px;
+  background-color: #FFB800;
+  position: absolute;
+  bottom: 0;
+  left: 10em;
+  bottom: 10px;
+  border-radius: 2px;
+
+}
+
 .contenedorCards {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  gap: 20px;
+  gap: 40px;
   /* position: relative; */
 
 }
@@ -415,4 +461,3 @@
     left: 0;
   }
 }
-
