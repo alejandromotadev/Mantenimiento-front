@@ -5,6 +5,8 @@ import Formulario from "./pages/Formulario";
 import FormularioProceso from "./pages/FormularioProceso";
 import Login from "./pages/Login";
 
+import Procesos from "./pages/Procesos";
+
 function App() {
   return (
     <div className="App">
@@ -14,6 +16,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/proceso_form/" element={<FormularioProceso />} />
           <Route path="/proceso/:faseId" element={<Formulario />} />
+          <Route path="/proceso/create" element={<Procesos />} />
         </Routes>
       </Router>
     </div>
