@@ -103,20 +103,11 @@ const Procesos = () => {
 
   return (
     <>
+    <div className={Style.main}>
+      <div className={Style.content}>
       <h1 className={Style.titulo}>Proyectos | Fases | Procesos</h1>
-      <hr style={{ marginBottom: '20px', width: 790 }} />
+      <hr style={{ marginBottom: '20px' }} />
       <div className={Style.container}>
-        {/* <div className={Style.cont} >
-          <div className={Style.imgc} onClick={OpenModal}>
-            <img src={Mas} alt='logoAdd' className={Style.icon} />
-          </div>
-
-          <div className={Style.textc}>
-            <div className={Style.hcontainer}>
-              Crear nuevo proceso
-            </div>
-          </div>
-        </div> */}
         {cuadros}
       </div>
 
@@ -147,6 +138,8 @@ const Procesos = () => {
             </div>
           </Modal>
         )}
+      </div>
+      </div>
       </div>
     </>
 

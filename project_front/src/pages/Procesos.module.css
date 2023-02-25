@@ -1,3 +1,14 @@
+.main {
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  margin: 5%;
+  margin-top: 0;
+}
+
+
 .container {
   width: 700px;
   margin: auto;
@@ -14,15 +25,15 @@
   font-size: 28px;
   line-height: 60px;
   color: #636363;
-  margin-left: 5%;
 }
 
 .cont {
-
   box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
   border-radius: 10px;
   width: 214px;
-  height: 214px;
+  min-height: 214px;
+  max-height: 350px;
+  height: auto;
   background-color: white;
 }
 
@@ -43,7 +54,7 @@
 
 .textc{
   width: 214px;
-  height: 34px;
+  height: 100%;
   /* background-color:coral; */
   text-align: left;
 }
