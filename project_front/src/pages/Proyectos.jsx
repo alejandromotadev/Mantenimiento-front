@@ -9,11 +9,11 @@ import logoProject from "../assets/LogoProject.svg"
 import Modal from "../components/Modal";
 import axios from "axios";
 
+import deleteButton from "../assets/deleteProject.svg"
 const Proyectos = () => {
 
 
     const [data, setData] = useState([]);
-
     const data2 = [
         {
             'id': 1,
@@ -194,7 +194,6 @@ const Proyectos = () => {
                 </Modal>
 
             </div>
-
         </div>
     );
 };

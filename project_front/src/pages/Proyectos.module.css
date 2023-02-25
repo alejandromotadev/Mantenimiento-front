@@ -111,6 +111,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+
 }
 .separator{
   position: absolute;
@@ -244,6 +245,7 @@
 .proyectCard {
 
   background-color: #FFFFFF;
+
   box-shadow: 0px 5px 20px rgba(30, 30, 30, 0.4);
   border-radius: 20px;
   width: 200px;
