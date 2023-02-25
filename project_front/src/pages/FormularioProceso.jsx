@@ -34,8 +34,6 @@ const FormularioProceso = () => {
 	// const [selected, setSelected] = useState([]);
 
 	const postProccess = async () => {
-		console.log(evidenciaEntrada);
-
 		const new_participantes = []
 		for (let i = 0; i < participantes.length; i++) {
 			new_participantes.push(participantes[i].value)
@@ -56,7 +54,7 @@ const FormularioProceso = () => {
 		if (metricas.length !== 0) {
 			formData.append("metrica", metricas[0])
 		}
-		
+
 		let index = 0;
 		if (evidenciaEntrada.length !== 0) {
 			for (let i = 0; i < evidenciaEntrada.length; i++) {
@@ -78,6 +76,8 @@ const FormularioProceso = () => {
 			}
 		}
 
+		await validateToken();
+
 		await axiosInstance.post("proceso/crear/", formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
@@ -88,7 +88,50 @@ const FormularioProceso = () => {
 				console.log(result);
 				alert("Proceso creado");
 			})
-			.catch((err) => { console.log(err); console.log(localStorage.getItem('token')); });
+			.catch((err) => { console.log(err); });
+	}
+
+	const validateToken = async () => {
+		console.log("validateToken")
+		let postData = {
+			token: localStorage.getItem('token')
+		}
+
+		await axiosInstance.post('user/token/verify/', postData, {
+			headers: { 'Content-Type': 'application/json' }
+		})
+			.then(async (result) => {
+				console.log(result.data);
+				if (result.detail === "Token is invalid or expired") {
+					await refreshToken();
+				}
+			})
+			.catch(async (err) => {
+				console.log("error post");
+				if (err.response.data.detail === "Token is invalid or expired") {
+					await refreshToken();
+				}
+			})
+	}
+
+	const refreshToken = async () => {
+		console.log("refreshToken")
+		console.log(localStorage.getItem('refresh'))
+		let postData = {
+			refresh: localStorage.getItem('refresh')
+		}
+		await axiosInstance.post('user/token/refresh/', postData, {
+			headers: { 'Content-Type': 'application/json' }
+		})
+			.then((result) => {
+				console.log(result.data);
+				if (result.detail === "Token is invalid or expired") {
+					alert("Access/Token no válido")
+				} else {
+					localStorage.setItem('token', result.data.access)
+				}
+			})
+			.catch((err) => { console.log(err); })
 	}
 
 	const selectDocs = ({ target }) => {
