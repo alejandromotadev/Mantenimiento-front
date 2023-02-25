@@ -1,297 +1,418 @@
 .main {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .block {
-    text-align: center;
-    margin: 0px auto;
-    width: 550px;
-    height: 641px;
-    background: #FFFFFF;
-    box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
-    border-radius: 30px;
-  }
-  
-  .titulo {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 60px;
-    color: #636363;
-  }
+  height: 100%;
+  width: 100%;
+}
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: 0;
-    align-items: center;
-  }
+.block {
+  text-align: center;
+  margin: 0px auto;
+  width: 550px;
+  height: 641px;
+  background: #FFFFFF;
+  box-shadow: 0px 10px 60px rgba(30, 30, 30, 0.4);
+  border-radius: 30px;
+}
 
-  .buttongenerate {
-    background-image: linear-gradient(to right, #FF004D 0%, #FF00B8  51%, #FF004D 100%);
-    border: none;
-    height: 70px;
-    width: 70px;
-    border-radius: 15px;
-    margin-bottom: 8px;
-    box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
-    transition: 0.5s;
-    background-size: 200% auto;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
+.titulo {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 60px;
+  color: #636363;
+  padding: 0;
+  margin-right: 5px;
+}
 
-  .buttongenerate:hover {
-    background-position: right center;
-    text-decoration: none;
-  }
- 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 0;
+  align-items: center;
+}
 
-  .buttoncreate {
-    background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%);
-    border: none;
-    height: 70px;
-    width: 70px;
-    border-radius: 15px;
-    margin-bottom: 8px;
-    box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
-    transition: 0.5s;
-    background-size: 200% auto;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
+.buttongenerate {
+  background-image: linear-gradient(to right, #FF004D 0%, #FF00B8  51%, #FF004D 100%);
+  border: none;
+  height: 70px;
+  width: 70px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
+  transition: 0.5s;
+  background-size: 200% auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttongenerate:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+.buttoncreate {
+  background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%);
+  border: none;
+  height: 70px;
+  width: 70px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  box-shadow: 0px 5px 50px rgba(30, 30, 30, 0.4);
+  transition: 0.5s;
+  background-size: 200% auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttoncreate:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+.buttontext {
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.buttonx {
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: 0;
+  float: right;
+  border-radius: 20px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.5;
+  width: 25px;
+  height: 25px;
+}
 
 
-  .buttoncreate:hover {
-    background-position: right center;
-    text-decoration: none;
-  }
+.content {
+  margin: 5%;
+  margin-top: 0;
+}
 
-  .buttontext {
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    margin: 0;
-    margin-bottom: 15px;
-  }
+.contentbody {
+  display: flex;
+  flex-direction: row;
+}
 
-  .content {
-    margin: 5%;
-    margin-top: 0;
-  }
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
 
-  .alert {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    opacity: 1;
-    transition: opacity 0.6s;
-    margin-bottom: 15px;
-  }
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+.closebtn:hover {
+  color: black;
+}
 
-  .closebtn:hover {
-    color: black;
-  }
-  
-  .inputcont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgba(0, 0, 0, 1);
-    border-radius: 30px;
-    width: 360px;
-    height: 60px;
-    text-align: center;
-    margin: 0px auto;  
-  }
-  
-  .input{
-    border: none;
-    box-sizing: border-box;
-    font-family: 'Poppins';
-    font-size: 16px;
-    font-weight: 400;
-    height: 60px;
-    outline: none; 
-    width: 250px;
-  }
-  
-  .wrapper {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    margin-top: 50px;
-    justify-content: center;
-  }
-  
-  .button63 {
-    background-image:  linear-gradient(90deg, #0085FF -21.97%, #00E0FF 113.38%);
-    border-radius: 30px;
-    border: 0;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 1em;
-    width: 140px;
-    height: 70px;
-    padding: 19px 24px;
-  }
-  
-  @media (min-width: 768px) {
-    .button63 {
-      font-size: 24px;
-      min-width: 196px;
-    }
-  }
-  
-  .titulo2 {
-    margin-top: 15px;
-    margin-bottom: 0px;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 60px;
-    color: #1E1E1E;
-  }
-  
-  .icon{
-    font-size: 20px;
-    color: rgba(31, 31, 31, 0.4);
-    padding-right: 15px
-  }
-  
-  #pass{
-    cursor: pointer;
-  }
-  
-  .modal-container {
-    margin: 60px auto;
-    padding-top: 0px;
-    position: relative;
-    width: 160px;
-  }
-  .modal-container .modal-btn {
-    display: block;
-    margin: 0 auto;
-    color: #fff;
-    width: 160px;
-    height: 50px;
-    line-height: 50px;
-    background: #446CB3;
-    font-size: 22px;
-    border: 0;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0 5px 5px -5px #333;
-    transition: background 0.3s ease-in;
-  }
-  .modal-container .modal-btn:hover {
-    background: #365690;
-  }
-  .modal-container .modal-content,
-  .modal-container .modal-backdrop {
-    height: 0;
-    width: 0;
-    opacity: 0;
-    visibility: hidden;
-    overflow: hidden;
-    cursor: pointer;
-    transition: opacity 0.2s ease-in;
-  }
-  .modal-container .modal-close {
-    color: #aaa;
+.inputcont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 30px;
+  width: 360px;
+  height: 60px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.input {
+  border: none;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 400;
+  height: 60px;
+  outline: none;
+  width: 250px;
+}
+
+.styleInput {
+  width: 400px;
+  height: 50px;
+  border: 1px solid rgba(30, 30, 30, 0.3);
+  border-radius: 10px;
+  padding-left: 2rem;
+}
+
+.createProjectButton {
+  font-family: 'Poppins';
+  border: none;
+  background: linear-gradient(90deg, #0085ff -21.97%, #00e0ff 113.38%);
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+.createDiv {
+  display: flex;
+  justify-content: center;
+  /* align-items: auto; */
+  padding: 30px 0px 0px 0px;
+  margin: 0 auto;
+
+  /* justify-content: auto; */
+}
+
+.wrapper {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.proyectCard {
+
+  background-color: #FFFFFF;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0px 20px -10px;
+  border-radius: 20px;
+  width: 200px;
+  height: 200px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+
+}
+
+.bottomCard{
+  /* font-family: 'Poppins', sans-serif;  bottom: 0; */
+  /* left: 0; */
+  color: rgba(30, 30, 30, 0.6);
+  position: absolute;
+  bottom: 0;
+}
+
+.contentCardTitle{
+    font-family: 'Poppins', sans-serif;  bottom: 0;
     position: absolute;
-    right: 5px;
-    top: 5px;
-    padding-top: 3px;
-    background: #fff;
-    font-size: 16px;
-    width: 25px;
-    height: 25px;
+    bottom: 0;
+    left: 10px;
+    bottom: 10px;
     font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-  }
-  .modal-container .modal-close:hover {
-    color: #333;
-  }
-  .modal-container .modal-content-btn {
+    /* right: px; */
+    left: 20px;
+}
+
+.contentCardStatus{
+    width: 20px;
+    height: 20px;
+    background-color: #FFB800;
     position: absolute;
-    text-align: center;
-    cursor: pointer;
-    bottom: 20px;
-    right: 30px;
-    background: #446CB3;
-    color: #fff;
-    width: 50px;
+    bottom: 0;
+    left: 10em;
+    bottom: 10px;
     border-radius: 2px;
-    font-size: 14px;
-    height: 32px;
-    padding-top: 9px;
-    font-weight: normal;
+
+}
+.contenedorCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 20px;
+  /* position: relative; */
+
+}
+
+
+.button63 {
+  background-image: linear-gradient(90deg, #0085FF -21.97%, #00E0FF 113.38%);
+  border-radius: 30px;
+  border: 0;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1em;
+  width: 140px;
+  height: 70px;
+  padding: 19px 24px;
+}
+
+@media (min-width: 768px) {
+  .button63 {
+    font-size: 24px;
+    min-width: 196px;
   }
-  .modal-container .modal-content-btn:hover {
-    color: #fff;
-    background: #365690;
-  }
-  .modal-container #modal-toggle {
-    display: none;
-  }
-  .modal-container #modal-toggle.active ~ .modal-backdrop, .modal-container #modal-toggle:checked ~ .modal-backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
+}
+
+.titulo2 {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 60px;
+  color: #1E1E1E;
+}
+
+.icon {
+  font-size: 20px;
+  color: rgba(31, 31, 31, 0.4);
+  padding-right: 15px
+}
+
+#pass {
+  cursor: pointer;
+}
+
+.modal-container {
+  margin: 60px auto;
+  padding-top: 0px;
+  position: relative;
+  width: 160px;
+}
+
+.modal-container .modal-btn {
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+  width: 160px;
+  height: 50px;
+  line-height: 50px;
+  background: #446CB3;
+  font-size: 22px;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 5px 5px -5px #333;
+  transition: background 0.3s ease-in;
+}
+
+.modal-container .modal-btn:hover {
+  background: #365690;
+}
+
+.modal-container .modal-content,
+.modal-container .modal-backdrop {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+}
+
+.modal-container .modal-close {
+  color: #aaa;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding-top: 3px;
+  background: #fff;
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-container .modal-close:hover {
+  color: #333;
+}
+
+.modal-container .modal-content-btn {
+  position: absolute;
+  text-align: center;
+  cursor: pointer;
+  bottom: 20px;
+  right: 30px;
+  background: #446CB3;
+  color: #fff;
+  width: 50px;
+  border-radius: 2px;
+  font-size: 14px;
+  height: 32px;
+  padding-top: 9px;
+  font-weight: normal;
+}
+
+.modal-container .modal-content-btn:hover {
+  color: #fff;
+  background: #365690;
+}
+
+.modal-container #modal-toggle {
+  display: none;
+}
+
+.modal-container #modal-toggle.active~.modal-backdrop, .modal-container #modal-toggle:checked~.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+.modal-container #modal-toggle.active~.modal-content, .modal-container #modal-toggle:checked~.modal-content {
+  opacity: 1;
+  background-color: #fff;
+  max-width: 400px;
+  width: 400px;
+  height: 280px;
+  padding: 10px 30px;
+  position: fixed;
+  left: calc(50% - 200px);
+  top: 12%;
+  border-radius: 4px;
+  z-index: 999;
+  pointer-events: auto;
+  cursor: auto;
+  visibility: visible;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 400px) {
+  .modal-container #modal-toggle.active~.modal-content, .modal-container #modal-toggle:checked~.modal-content {
     left: 0;
-    top: 0;
-    z-index: 9;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.2s ease-in;
   }
-  .modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {
-    opacity: 1;
-    background-color: #fff;
-    max-width: 400px;
-    width: 400px;
-    height: 280px;
-    padding: 10px 30px;
-    position: fixed;
-    left: calc(50% - 200px);
-    top: 12%;
-    border-radius: 4px;
-    z-index: 999;
-    pointer-events: auto;
-    cursor: auto;
-    visibility: visible;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
-  }
-  @media (max-width: 400px) {
-    .modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {
-      left: 0;
-    }
-  }
+}
+
