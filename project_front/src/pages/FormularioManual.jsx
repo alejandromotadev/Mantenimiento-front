@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import Style from "./FormularioManual.module.css";
 import { axiosInstance } from "../services/axios";
 
-const FormularioManual = ({nombre}) => {
+const FormularioManual = () => {
   //Datos
   const [identificadorProyecto, setIdentificadorProyecto] = useState(null);
-  const [identificador, setIdentificador] = useState(nombre);
+  const [identificador, setIdentificador] = useState("");
   const [historia, setHistoria] = useState(null);
   const [alcance, setAlcance] = useState(null);
   const [vision, setVision] = useState(null);
@@ -20,15 +20,16 @@ const FormularioManual = ({nombre}) => {
 
   const getProyecto = async() => {
     await axiosInstance
-    .get("proyecto/list", { 
+    .get("proyectos/list", { 
       headers: {
       "Content-type": "multipart/form-data",
       "Authorization": "Bearer " + localStorage.getItem("token"),
       },
     })
-    .then((result) => {
-      console.log(result);
-      setIdentificadorProyecto(result[result.length-1].id);
+    .then(({data}) => {
+      console.log(data);
+      setIdentificadorProyecto(data.pay_load[data.pay_load.length-1].id);
+      setIdentificador(data.pay_load[data.pay_load.length-1].name);
     })
     .catch((err) => {
       console.log(err);
@@ -38,16 +39,16 @@ const FormularioManual = ({nombre}) => {
   const postManual = async () => {
     let formData = new FormData();
 
-    formData.append("id_proyecto", identificadorProyecto);
+    formData.append("proyecto", identificadorProyecto);
     formData.append("id_manual", identificador);
     formData.append("historia", historia);
     formData.append("alcance", alcance);
     formData.append("vision", vision);
     formData.append("mision", mision);
-    formData.append("organizacion_empresa", organizacionEmpresa);
-    formData.append("organigrama", organigrama);
-    formData.append("vocabulario", vocabulario);
-    formData.append("funciones_puestos", funciones);
+    formData.append("organizacion_empresa", organizacionEmpresa[0]);
+    formData.append("organigrama", organigrama[0]);
+    formData.append("vocabulario", vocabulario[0]);
+    formData.append("funciones_puestos", funciones[0]);
     formData.append("politicas", politicas);
 
     console.log(formData);
@@ -71,9 +72,9 @@ const FormularioManual = ({nombre}) => {
     e.preventDefault();
   };
 
-  // useEffect(() => {
-  //   getProyecto();
-  // }, []);
+  useEffect(() => {
+    getProyecto();
+  }, []);
 
   return (
     <div>

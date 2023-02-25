@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/proceso/:faseId" element={<Formulario />} />
-          <Route path="/manual" element={<Manual nombre="Nombre_Manual_Prueba" />} />
+          <Route path="/manual" element={<Manual />} />
         </Routes>
       </Router>
     </div>
