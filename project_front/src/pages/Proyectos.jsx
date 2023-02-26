@@ -147,7 +147,7 @@ const Proyectos = () => {
 
                                             <div className={Style.bottomCard}>
                                                 <div className={Style.contentCardTitle}>
-                                                     <a href="/proceso/2">{elemento.nombre}</a>
+                                                     <a href="/fases">{elemento.nombre}</a>
                                                     </div>
                                                 <div className={Style.contentCardStatus}><hr style={{height: '2px', border: 'none', backgroundColor: 'white', width: '50%'}}/></div>
                                             </div>
