@@ -3,6 +3,7 @@ import { useState } from "react";
 import Style from "./Procesos.module.css";
 import { axiosInstance } from "../services/axios";
 import greyLogo from "../assets/LogoProject.svg";
+import Navbar from "../components/NavItems";
 import axios from 'axios';
 
 const Fases = () => {
@@ -41,6 +42,7 @@ const Fases = () => {
   var numFases = payload.length
   const cuadros = [...Array(numFases)].map((_, i) => (
     <div key={i} className={Style.cuadro}>
+      {/* <Navbar/> */}
       <div className={Style.cont}>
         <img   src={greyLogo} alt="Mi Imagen SVG" className={Style.logo}/>
         <div className={Style.linea}></div>

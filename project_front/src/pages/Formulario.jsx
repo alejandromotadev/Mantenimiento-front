@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Navbar from "../components/NavItems";
 import Style from "./Formulario.module.css";
 import { axiosInstance } from "../services/axios";
 import { useParams } from "react-router-dom";
@@ -74,6 +74,7 @@ const Formulario = () => {
 	
 	return (
 		<div>
+			<Navbar/>
 			<div className={Style.formWrapper}>
 				<form onSubmit={onSubmit}>
 					<div>

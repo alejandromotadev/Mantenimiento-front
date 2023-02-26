@@ -5,6 +5,7 @@ import { axiosInstance } from "../services/axios";
 import { useParams } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
 import { validateToken } from '../services/verifyToken';
+import Navbar from "../components/NavItems";
 
 const FormularioProceso = () => {
 	useEffect(() => {
@@ -156,6 +157,7 @@ const FormularioProceso = () => {
 
 	return (
 		<div>
+			<Navbar/>
 			<div className={Style.formWrapper}>
 				<form onSubmit={onSubmit}>
 					<div>

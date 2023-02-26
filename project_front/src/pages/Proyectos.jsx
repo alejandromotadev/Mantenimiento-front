@@ -8,6 +8,7 @@ import { faLock, faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
 import logoProject from "../assets/LogoProject.svg"
 import Modal from "../components/Modal";
 import axios from "axios";
+import Navbar from "../components/NavItems";
 
 import deleteButton from "../assets/deleteProject.svg"
 const Proyectos = () => {
@@ -114,6 +115,7 @@ const Proyectos = () => {
 
     return (
         <div className={Style.main}>
+            <Navbar/>
             <div className={Style.content}>
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                     <h1 className={Style.titulo}>Proyectos</h1>

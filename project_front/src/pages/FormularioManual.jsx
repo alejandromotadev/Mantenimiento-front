@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Style from "./FormularioManual.module.css";
 import { axiosInstance } from "../services/axios";
+import Navbar from "../components/NavItems";
 
 const FormularioManual = () => {
   //Datos
@@ -78,6 +79,7 @@ const FormularioManual = () => {
 
   return (
     <div>
+      <Navbar/>
       <div className={Style.formWrapper}>
         <form onSubmit={onSubmit}>
           <div>
