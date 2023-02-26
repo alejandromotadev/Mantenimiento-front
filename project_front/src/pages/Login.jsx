@@ -26,6 +26,7 @@ const Login = () => {
 					"password": password
 				}
 
+
 				await axiosInstance.post("user/login/", data)
 					.then(res => {
 						console.log(res.data);
@@ -38,7 +39,6 @@ const Login = () => {
 						alert(error.response.data.non_field_errors)
 					});
 			} else {
-
 				alert("No password provided")
 			}
 		} else {

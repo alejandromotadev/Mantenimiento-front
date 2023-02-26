@@ -5,8 +5,8 @@ import Fases from "./pages/Fases";
 import Formulario from "./pages/Formulario";
 import FormularioProceso from "./pages/FormularioProceso";
 import Login from "./pages/Login";
+import Manual from "./pages/FormularioManual";
 import Proyectos from "./pages/Proyectos";
-
 import Procesos from "./pages/Procesos";
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/proceso_form/" element={<FormularioProceso />} />
           <Route path="/proceso/:faseId" element={<Formulario />} />
+          <Route path="/manual" element={<Manual />} />
           <Route path="/proceso/create" element={<Procesos />} />
           <Route path="/inicio" element={<Proyectos />} />
           <Route path="/fases" element={<Fases />} />
