@@ -19,23 +19,26 @@ const Login = () => {
 	};
 
 	const login = async () => {
-		if (username !== null && username!== "") {
-			if(password !==null && password!== "") {
+		if (username !== null && username !== "") {
+			if (password !== null && password !== "") {
 				let data = {
-					"username" : username,
-					"password" : password
+					"username": username,
+					"password": password
 				}
-				await axiosInstance.post("user/login/",data)
-				.then(res =>{
-					console.log(res.data);
-					localStorage.setItem('token',res.data.access_token)
-					alert("Inicio exitoso")
-					navigate('/inicio')
-				})
-				.catch(error => {
-					alert(error.response.data.non_field_errors)
-				});
-			}else{
+
+				await axiosInstance.post("user/login/", data)
+					.then(res => {
+						console.log(res.data);
+						localStorage.setItem('token', res.data.access_token)
+						localStorage.setItem('refresh', res.data.refresh_token)
+						alert("Inicio exitoso")
+						navigate('/proceso/create')
+					})
+					.catch(error => {
+						alert(error.response.data.non_field_errors)
+					});
+			} else {
+
 				alert("No password provided")
 			}
 		} else {
@@ -62,7 +65,7 @@ const Login = () => {
 
 				<p className={Style.titulo2}>Contraseña</p>
 				<div className={Style.inputcont}>
-					<FontAwesomeIcon icon={passwordShown ? faUnlock : faLock } id={Style.pass} className={Style.icon} onClick={togglePassword} />
+					<FontAwesomeIcon icon={passwordShown ? faUnlock : faLock} id={Style.pass} className={Style.icon} onClick={togglePassword} />
 					<input
 						className={Style.input}
 						type={passwordShown ? "text" : "password"}
