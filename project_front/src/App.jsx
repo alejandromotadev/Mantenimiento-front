@@ -11,7 +11,8 @@ function App() {
       <Nav/>
       <Router>
         <Routes>
-          <Route path="/" element={<Proyectos />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/inicio" element={<Proyectos />} />
           <Route path="/proceso/:faseId" element={<Formulario />} />
           <Route path="/proyectos" element={<Formulario />}/>
         </Routes>
