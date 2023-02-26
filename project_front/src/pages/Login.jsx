@@ -32,7 +32,7 @@ const Login = () => {
 						localStorage.setItem('token', res.data.access_token)
 						localStorage.setItem('refresh', res.data.refresh_token)
 						alert("Inicio exitoso")
-						navigate('/proceso/create')
+						navigate('/inicio')
 					})
 					.catch(error => {
 						alert(error.response.data.non_field_errors)

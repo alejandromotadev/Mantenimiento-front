@@ -45,7 +45,7 @@ const Fases = () => {
         <img   src={greyLogo} alt="Mi Imagen SVG" className={Style.logo}/>
         <div className={Style.linea}></div>
         <section style={{textAlign: "left", margin:4}}>
-         Fase {payload[i].nombre}
+         < a href='/proceso/create'>Fase {payload[i].nombre}</a>
          <input type="checkbox" id="status" name="status" value="status" />
         </section>
         
