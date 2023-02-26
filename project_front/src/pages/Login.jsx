@@ -30,7 +30,7 @@ const Login = () => {
 					console.log(res.data);
 					localStorage.setItem('token',res.data.access_token)
 					alert("Inicio exitoso")
-					navigate('/proceso/2')
+					navigate('/inicio')
 				})
 				.catch(error => {
 					alert(error.response.data.non_field_errors)

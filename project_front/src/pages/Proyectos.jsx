@@ -2,7 +2,7 @@ import Style from "./Proyectos.module.css";
 import "./Proyectos.module.css";
 import { axiosInstance } from "../services/axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
 import logoProject from "../assets/LogoProject.svg"
@@ -50,7 +50,12 @@ const Proyectos = () => {
 
     ]
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/v1/proyectos/list/')
+        axiosInstance.get('proyectos/list/',{
+            headers: {
+                "Content-type":"application/json",
+                "Authorization": "Bearer "+ localStorage.getItem('token')
+            },
+        })
             .then(response => {
                 setData(response.data);
             })
@@ -60,9 +65,15 @@ const Proyectos = () => {
     }, []);
 
     const crearProyecto = () => {
-        axios.post('http://127.0.0.1:8000/api/v1/proyectos/crear/', {
+        let postData ={
             id_users: 1,
             name: proyectoNombre
+        }
+        axiosInstance.post('proyectos/crear/',postData, {
+            headers: {
+                "Content-type":"application/json",
+                "Authorization": "Bearer "+ localStorage.getItem('token')
+            }
         })
             .then((respuesta) => {
                 console.log(respuesta);
@@ -135,7 +146,9 @@ const Proyectos = () => {
                                         <div>
 
                                             <div className={Style.bottomCard}>
-                                                <div className={Style.contentCardTitle}>{elemento.nombre}</div>
+                                                <div className={Style.contentCardTitle}>
+                                                     <a href="/proceso/2">{elemento.nombre}</a>
+                                                    </div>
                                                 <div className={Style.contentCardStatus}><hr style={{height: '2px', border: 'none', backgroundColor: 'white', width: '50%'}}/></div>
                                             </div>
                                         </div>
