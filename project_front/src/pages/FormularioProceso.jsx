@@ -27,10 +27,28 @@ const FormularioProceso = () => {
 	//Tabla evidencias
 	const [evidenciaEntrada, setEvidenciaEntrada] = useState([])
 	const [evidenciaSalida, setEvidenciaSalida] = useState([])
+	const [cantSalida, setCantSalida] = useState(null)
+	const [cantEntrada, setCantEntrada] = useState(null)
+	const [cantMetrica, setCantMetrica] = useState(null)
 
 	const { faseId } = useParams()
 
 	const [nombreProceso, setNombreProceso] = useState(null)
+
+	const reiniciarDatos = () => {
+		setProposito(null)
+		setObjetivo([])
+		setDescripcion([])
+		setResponsable(null)
+		setCategoria(null)
+		setParticipantes(["Sin participantes"])
+		setProcesoRelacionado(null)
+		setFrecuencia(null)
+		setEstado(null)
+		setMetricas([])
+		setEvidenciaEntrada([])
+		setEvidenciaSalida([])
+	}
 
 	//opciones para participantes con multiselect
 	const options = [
@@ -38,7 +56,7 @@ const FormularioProceso = () => {
 		{ label: "Participante 2", value: 2 },
 		{ label: "Participante 3", value: 3 },
 	];
-	// const [selected, setSelected] = useState([]);
+	const [selected, setSelected] = useState([]);
 
 	const postProccess = async () => {
 		const new_participantes = []
@@ -48,57 +66,65 @@ const FormularioProceso = () => {
 
 		let formData = new FormData();
 		formData.append("id_proceso", 1);
-		if (nombre != null){
+		if (nombre != null) {
 			formData.append("nombre", nombre);
 		}
-		if (descripcion.length != 0){
+		if (descripcion.length != 0) {
 			formData.append("descripcion", descripcion);
 		}
-		if (proposito != null){
+		if (proposito != null) {
 			formData.append("proposito", proposito);
 		}
-		if (objetivo.length != 0){
+		if (objetivo.length != 0) {
 			formData.append("objetivo", objetivo);
 		}
-		if (responsable != null){
+		if (responsable != null) {
 			formData.append("responsable", responsable);
 		}
-		if (categoria != null){
+		if (categoria != null) {
 			formData.append("categoria", categoria);
 		}
-		if (new_participantes.length != 0){
+		if (new_participantes.length != 0) {
 			formData.append("participantes", new_participantes);
 		}
-		if (procesoRelacionado != null){
+		if (procesoRelacionado != null) {
 			formData.append("proceso_relacionado", procesoRelacionado);
 		}
-		if (frecuencia != null){
+		if (frecuencia != null) {
 			formData.append("frecuencia", frecuencia);
 		}
-		if (estado != null){
+		if (estado != null) {
 			formData.append("status", estado);
 		}
-		if (metricas.length !== 0) {
+		if (metricas.length !== 0 && typeof metricas[0] !== "string") {
 			formData.append("metrica", metricas[0])
 		}
 
 		let index = 0;
 		if (evidenciaEntrada.length !== 0) {
-			for (let i = 0; i < evidenciaEntrada.length; i++) {
+			let evidenciaEntradaPost = evidenciaEntrada
+			for (let j = 1; j <= cantEntrada; j++) {
+				evidenciaEntradaPost.shift()
+			}
+			for (let i = 0; i < evidenciaEntradaPost.length; i++) {
 				let proceso_media = "proceso_media[" + [i] + "]"
-				formData.append(proceso_media + "file", evidenciaEntrada[i])
-				formData.append(proceso_media + "nombre", evidenciaEntrada[i].name)
+				formData.append(proceso_media + "file", evidenciaEntradaPost[i])
+				formData.append(proceso_media + "nombre", evidenciaEntradaPost[i].name)
 				formData.append(proceso_media + "tipo", "Entrada")
 				index += 1
 			}
 		}
 
 		if (evidenciaSalida.length !== 0) {
-			for (let i = 0; i < evidenciaSalida.length; i++) {
+			let evidenciaSalidaPost = evidenciaSalida
+			for (let j = 1; j <= cantSalida; j++) {
+				evidenciaSalidaPost.shift()
+			}
+			for (let i = 0; i < evidenciaSalidaPost.length; i++) {
 				index += 1
 				let proceso_media = "proceso_media[" + [index] + "]"
-				formData.append(proceso_media + "file", evidenciaSalida[i])
-				formData.append(proceso_media + "nombre", evidenciaSalida[i].name)
+				formData.append(proceso_media + "file", evidenciaSalidaPost[i])
+				formData.append(proceso_media + "nombre", evidenciaSalidaPost[i].name)
 				formData.append(proceso_media + "tipo", "Salida")
 			}
 		}
@@ -149,25 +175,71 @@ const FormularioProceso = () => {
 			},
 		})
 			.then((result) => {
+				reiniciarDatos();
 				console.log(result.data.pay_load);
 				setNombreProceso(result.data.pay_load.nombre);
+				if (result.data.pay_load.descripcion.length != 0) {
+					setDescripcion(result.data.pay_load.descripcion)
+				}
+				if (result.data.pay_load.proposito != null) {
+					setProposito(result.data.pay_load.proposito)
+				}
+				if (result.data.pay_load.objetivo.length != 0) {
+					setObjetivo(result.data.pay_load.objetivo)
+				}
+				if (result.data.pay_load.responsable != null) {
+					setResponsable(result.data.pay_load.responsable)
+				}
+				if (result.data.pay_load.categoria != null) {
+					setCategoria(result.data.pay_load.categoria)
+				}
+				if (result.data.pay_load.proceso_relacionado != null) {
+					setProcesoRelacionado(result.data.pay_load.proceso_relacionado)
+				}
+				if (result.data.pay_load.frecuencia != null) {
+					setFrecuencia(result.data.pay_load.frecuencia)
+				}
+				if (result.data.pay_load.estado != null) {
+					setEstado(result.data.pay_load.estado)
+				}
+				// if (result.data.pay_load.participantes != 0) {
+				// 	setParticipantes()
+				// }
+				if (result.data.pay_load.proceso_media.length !== 0) {
+					let cantSalidaTemp = 0, cantEntradaTemp = 0
+					for (let i = 0; i < result.data.pay_load.proceso_media.length; i++) {
+						if (result.data.pay_load.proceso_media[i].tipo === "Entrada") {
+							cantEntradaTemp += 1
+							setEvidenciaEntrada(evidenciaEntrada => [...evidenciaEntrada, result.data.pay_load.proceso_media[i]])
+						}
+						if (result.data.pay_load.proceso_media[i].tipo === "Salida") {
+							cantSalidaTemp += 1
+							setEvidenciaSalida(evidenciaSalida => [...evidenciaSalida, result.data.pay_load.proceso_media[i]])
+						}
+					}
+					setCantSalida(cantSalidaTemp)
+					setCantEntrada(cantEntradaTemp)
+				}
+				if (result.data.pay_load.metrica !== null) {
+					setMetricas([result.data.pay_load.metrica])
+				}
 			})
 			.catch((err) => { console.log(err); });
 	}
 
 	return (
 		<div>
-			<Navbar/>
+			<Navbar />
 			<div className={Style.formWrapper}>
 				<form onSubmit={onSubmit}>
 					<div>
 						<h1>Editar proceso</h1>
 					</div>
-					<div>
+					{/* <div>
 						<h3>
 							Identificador: <b>__.__.__.__</b>
 						</h3>
-					</div>
+					</div> */}
 					<div>
 						<h3>
 							Fase: <b>{faseId}</b>
@@ -190,6 +262,7 @@ const FormularioProceso = () => {
 							placeholder="Descripción"
 							onChange={(e) => setDescripcion([e.target.value])}
 							onBlur={(e) => setDescripcion([e.target.value])}
+							defaultValue={descripcion ? descripcion : []}
 						></input>
 					</div>
 					<div>
@@ -199,6 +272,7 @@ const FormularioProceso = () => {
 							placeholder="Propósito"
 							onChange={(e) => setProposito(e.target.value)}
 							onBlur={(e) => setProposito(e.target.value)}
+							defaultValue={proposito ? proposito : ""}
 						></input>
 					</div>
 					<div>
@@ -208,6 +282,7 @@ const FormularioProceso = () => {
 							placeholder="Objetivo"
 							onChange={(e) => setObjetivo([e.target.value])}
 							onBlur={(e) => setObjetivo([e.target.value])}
+							defaultValue={objetivo ? objetivo : []}
 						></input>
 					</div>
 					<div>
@@ -224,6 +299,7 @@ const FormularioProceso = () => {
 							placeholder="Categoría"
 							onChange={(e) => setCategoria(e.target.value)}
 							onBlur={(e) => setCategoria(e.target.value)}
+							defaultValue={categoria ? categoria : ""}
 						></input>
 					</div>
 					<div className={Style.multi_select}>
@@ -240,6 +316,7 @@ const FormularioProceso = () => {
 								allItemsAreSelected: "Todos los participantes",
 								selectSomeItems: "Selecciona a los participantes",
 							}}
+							defaultValue={participantes ? participantes : selected}
 						/>
 					</div>
 					<div>
@@ -249,6 +326,7 @@ const FormularioProceso = () => {
 							placeholder="Proceso relacionado"
 							onChange={(e) => setProcesoRelacionado(e.target.value)}
 							onBlur={(e) => setProcesoRelacionado(e.target.value)}
+							defaultValue={procesoRelacionado ? procesoRelacionado : ""}
 						></input>
 					</div>
 					<div>
@@ -258,6 +336,7 @@ const FormularioProceso = () => {
 							placeholder="Frecuencia"
 							onChange={(e) => setFrecuencia(e.target.value)}
 							onBlur={(e) => setFrecuencia(e.target.value)}
+							defaultValue={frecuencia ? frecuencia : ""}
 						></input>
 					</div>
 					<div>
@@ -271,7 +350,7 @@ const FormularioProceso = () => {
 												<b>Evidencia {index + 1}</b>
 											</td>
 											<td>
-												{ev.name}
+												{ev.name ? ev.name : ev.nombre}
 											</td>
 											<td className={Style.file}>
 												<label htmlFor={"docEntrada" + index}>Elegir archivo</label>
@@ -302,7 +381,7 @@ const FormularioProceso = () => {
 												<b>Evidencia {index + 1}</b>
 											</td>
 											<td>
-												{ev.name}
+												{ev.name ? ev.name : ev.nombre}
 											</td>
 											<td className={Style.file}>
 												<label htmlFor={"docSalida" + index}>Elegir archivo</label>
@@ -332,7 +411,7 @@ const FormularioProceso = () => {
 									return (
 										<tr key={index}>
 											<td>
-												{ev.name}
+												{ev.name ? ev.name : "Documento de metricas.pdf"}
 											</td>
 											<td className={Style.file}>
 												<label htmlFor={"docMetricas" + index}>Elegir archivo</label>
