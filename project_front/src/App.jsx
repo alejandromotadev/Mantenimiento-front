@@ -15,7 +15,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Login />} />
           <Route path="/proceso_form/" element={<FormularioProceso />} />
-          <Route path="/proceso/:faseId" element={<Formulario />} />
+          {/* <Route path="/proceso/:faseId" element={<Formulario />} /> */}
           <Route path="/manual" element={<Manual />} />
           <Route path="/proceso/create" element={<Procesos />} />
           <Route path="/inicio" element={<Proyectos />} />

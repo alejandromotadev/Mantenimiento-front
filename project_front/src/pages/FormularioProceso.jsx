@@ -1,15 +1,16 @@
-import { useState } from "react";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Style from "./Formulario.module.css";
 import { axiosInstance } from "../services/axios";
 import { useParams } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
 import { validateToken } from '../services/verifyToken';
 import Navbar from "../components/NavItems";
+import { faCircleRight } from '@fortawesome/free-regular-svg-icons';
 
 const FormularioProceso = () => {
 	useEffect(() => {
 		getData()
+		setSelected([{label: "Prueba", value:4}]) //aqui seteas lo que ya quieres que salga marcado
 	}, [])
 	//Proceso
 	const [nombre, setNombre] = useState(null)
@@ -37,10 +38,12 @@ const FormularioProceso = () => {
 		{ label: "Participante 1", value: 1 },
 		{ label: "Participante 2", value: 2 },
 		{ label: "Participante 3", value: 3 },
+		{ label: "Prueba", value:4} //para poner una opcion que ya venga marcada, primero debe existir en las opciones disponibles
 	];
-	// const [selected, setSelected] = useState([]);
+	const [selected, setSelected] = useState([]);
 
 	const postProccess = async () => {
+		
 		const new_participantes = []
 		for (let i = 0; i < participantes.length; i++) {
 			new_participantes.push(participantes[i].value)
@@ -232,8 +235,8 @@ const FormularioProceso = () => {
 							className={Style.rmsc}
 							options={options}
 							showCheckbox
-							value={participantes}
-							onChange={setParticipantes}
+							value={selected}
+							onChange={setSelected}
 							overrideStrings={{
 								selectAll: "Escoger todos los participantes",
 								search: "Buscar participante",
