@@ -39,7 +39,7 @@ const FormularioManual = () => {
 
   const postManual = async () => {
     let formData = new FormData();
-
+    console.log(identificadorProyecto)
     formData.append("proyecto", identificadorProyecto);
     formData.append("id_manual", identificador);
     formData.append("historia", historia);
@@ -63,6 +63,7 @@ const FormularioManual = () => {
       .then((result) => {
         console.log(result);
         alert("Manual creado");
+        window.location = '/proceso/create'
       })
       .catch((err) => {
         console.log(err);

@@ -2,7 +2,7 @@ import Style from "./Proyectos.module.css";
 import "./Proyectos.module.css";
 import { axiosInstance } from "../services/axios";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock, faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
 import logoProject from "../assets/LogoProject.svg"
@@ -58,7 +58,8 @@ const Proyectos = () => {
             },
         })
             .then(response => {
-                setData(response.data);
+                setData(response.data.pay_load);
+                console.log(response.data)
             })
             .catch(error => {
                 console.log(error);
@@ -78,6 +79,7 @@ const Proyectos = () => {
         })
             .then((respuesta) => {
                 console.log(respuesta);
+                window.location = '/manual'
             })
             .catch((error) => {
                 console.error(error);
@@ -86,12 +88,20 @@ const Proyectos = () => {
 
 
     const deleteProyecto = (id) => {
-        axios.delete('http://127.0.0.1:8000/api/v1/proyectos/eliminar/' + id)
+        axiosInstance.delete('proyectos/eliminar/' + id,{
+            headers: {
+                "Content-type":"application/json",
+                "Authorization": "Bearer "+ localStorage.getItem('token')
+            }
+        })
             .then((respuesta) => {
                 console.log(respuesta);
+                alert('Se borro el proyecto')
+                window.location.reload()
             })
             .catch((error) => {
                 console.error(error);
+
             });
 
     }
@@ -128,9 +138,9 @@ const Proyectos = () => {
                 <div className={Style.contentbody}>
                     
                     <div className={Style.contenedorCards}>
-                        {data2.length > 0 ?
+                        {data.length > 0 ?
                             <>
-                                {data2.map((elemento, i) => (
+                                {data.map((elemento, i) => (
                                     <div className={Style.proyectCard} key={elemento.id}>
                                         <div style={{padding: '8px'}}>
                                             <button className={Style.buttonx} onClick={deleteProyecto.bind(this, elemento.id)}>
@@ -149,7 +159,7 @@ const Proyectos = () => {
 
                                             <div className={Style.bottomCard}>
                                                 <div className={Style.contentCardTitle}>
-                                                     <a href="/fases">{elemento.nombre}</a>
+                                                     <Link to="/fases">{elemento.name}</Link>
                                                     </div>
                                                 <div className={Style.contentCardStatus}><hr style={{height: '2px', border: 'none', backgroundColor: 'white', width: '50%'}}/></div>
                                             </div>
