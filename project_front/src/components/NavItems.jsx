@@ -1,7 +1,12 @@
 import Logo from "../assets/Logo.svg";
 import "../components/Navbar.css";
+import { useNavigate } from 'react-router-dom'
 
 export const Nav = () => {
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate('/');
+  };
   const generate = () => {
     alert("boton");
   };
@@ -83,7 +88,7 @@ export const Nav = () => {
           </a>
         </li>
         <li>
-          <button className="container-logout" onClick={generate}>
+          <button className="container-logout" onClick={navigateToLogin}>
             <svg
               width="40"
               height="40"
