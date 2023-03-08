@@ -1,6 +1,6 @@
 import Logo from "../assets/Logo.svg";
 import "../components/Navbar.css";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export const Nav = () => {
   const navigate = useNavigate();
@@ -13,7 +13,8 @@ export const Nav = () => {
   return (
     <nav className="nav">
       <div className="logo">
-        <img src={Logo} alt="Logo" width={280} href="/inicio" />
+        <Link to ='/inicio'> <img src={Logo} alt="Logo" width={280} href="/inicio" /></Link>
+        
       </div>
 
       <ul>
