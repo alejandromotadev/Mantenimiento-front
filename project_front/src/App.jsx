@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Manual from "./pages/FormularioManual";
 import Proyectos from "./pages/Proyectos";  
 import Procesos from "./pages/Procesos";
+import Usuarios from "./pages/Usuarios";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/proceso_form/" element={<FormularioProceso />} />
           <Route path="/manual" element={<Manual />} />
           <Route path="/proceso/create" element={<Procesos />} />
