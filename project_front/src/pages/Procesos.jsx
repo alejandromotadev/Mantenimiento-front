@@ -4,7 +4,7 @@ import Style from "./Procesos.module.css";
 import { axiosInstance } from "../services/axios";
 import greyLogo from "../assets/gray_logo.svg";
 import Mas from "../assets/Mas.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../components/VentanaModal";
 import { validateToken } from "../services/verifyToken";
 import Navbar from "../components/NavItems";
@@ -113,7 +113,7 @@ const Procesos = () => {
       <Navbar />
       <div className={Style.main}>
         <div className={Style.content}>
-          <h1 className={Style.titulo}>Proyectos | Fases | Procesos</h1>
+          <h1 className={Style.titulo}> <Link to ='/inicio'> Proyectos </Link>| <Link to ="/fases"> Fases </Link> | Procesos</h1>
           <hr style={{ marginBottom: "20px" }} />
           <div className={Style.container}>{cuadros}</div>
 
