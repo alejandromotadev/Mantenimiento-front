@@ -10,9 +10,15 @@ const Usuarios = () => {
   const data = [
     {
       id: 1,
-      nombre: "Nombre",
-      rol: "Rol",
-      creado: "fecha"
+      nombre: "Azul Briones",
+      rol: "Gestor de calidad",
+      creado: "11 Febrero, 2023",
+    },
+    {
+      id: 2,
+      nombre: "Gissele Zavala",
+      rol: "Tester",
+      creado: "15 Febrero, 2023",
     }
   ];
   useEffect(() => {
@@ -33,15 +39,36 @@ const Usuarios = () => {
   }, []);
 
   const crearUsuario = () => {
-    let postData = {
-      id_users: 1,
-      user: usuario,
-      name:nombre,
-      rol: rol,
-      password: password
-    };
+    if (usuario !== null && usuario !== "") {
+        let postData = {
+          id_users: 1,
+          user: usuario,
+          name: nombre,
+          rol: rol,
+          password: password,
+        };
+        axiosInstance
+          .post("insert-url", postData, {
+            headers: {
+              "Content-type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          })
+          .then((respuesta) => {
+            console.log(respuesta);
+            window.location = "/a-url";
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    } else {
+      alert("No username provided");
+    }
+  };
+
+  const updateUser = (id) => {
     axiosInstance
-      .post("insert-url", postData, {
+      .put("insert-url" + id, {
         headers: {
           "Content-type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -49,7 +76,8 @@ const Usuarios = () => {
       })
       .then((respuesta) => {
         console.log(respuesta);
-        window.location = "/a-url";
+        alert("Se actualizó el usuario");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -132,7 +160,25 @@ const Usuarios = () => {
               <>
                 {data.map((elemento, i) => (
                   <div className={Style.proyectCard} key={elemento.id}>
-                    <div style={{ padding: "8px" }}>
+                    <div>
+                      <button
+                        className={Style.buttonx}
+                        onClick={updateUser.bind(this, elemento.id)}
+                      >
+                        <svg
+                          width="25"
+                          height="25"
+                          viewBox="0 0 34 34"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M16.6667 0C25.8833 0 33.3333 7.45 33.3333 16.6667C33.3333 25.8833 25.8833 33.3333 16.6667 33.3333C7.45 33.3333 0 25.8833 0 16.6667C0 7.45 7.45 0 16.6667 0ZM23.825 9.50833C23.1761 8.8594 22.1239 8.8594 21.475 9.50833L18.788 12.1953C17.6164 13.3669 15.7169 13.3669 14.5453 12.1953L11.8583 9.50833C11.2094 8.8594 10.1573 8.8594 9.50833 9.50833C8.8594 10.1573 8.8594 11.2094 9.50833 11.8583L12.1953 14.5453C13.3669 15.7169 13.3669 17.6164 12.1953 18.788L9.50833 21.475C8.8594 22.1239 8.8594 23.1761 9.50833 23.825C10.1573 24.4739 11.2094 24.4739 11.8583 23.825L14.5453 21.138C15.7169 19.9664 17.6164 19.9664 18.788 21.138L21.475 23.825C22.1239 24.4739 23.1761 24.4739 23.825 23.825C24.4739 23.1761 24.4739 22.1239 23.825 21.475L21.138 18.788C19.9664 17.6164 19.9664 15.7169 21.138 14.5453L23.825 11.8583C24.4739 11.2094 24.4739 10.1573 23.825 9.50833Z"
+                            fill="black"
+                            fillOpacity="0.3"
+                          />
+                        </svg>
+                      </button>
                       <button
                         className={Style.buttonx}
                         onClick={deleteUser.bind(this, elemento.id)}
@@ -152,9 +198,18 @@ const Usuarios = () => {
                         </svg>
                       </button>
                     </div>
-                    <div>
-                      <div className={Style.bottomCard}>
-                      </div>
+                    <div className={Style.proyectCardUser}>
+                      <ul>
+                        <li>
+                          <p style={{ color: "black" }}>{elemento.nombre}</p>
+                        </li>
+                        <li>
+                          <p className={Style.userText}>{elemento.rol}</p>
+                        </li>
+                        <li>
+                          <p className={Style.userText}>{elemento.creado}</p>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 ))}
@@ -185,8 +240,8 @@ const Usuarios = () => {
           <div className={Style.buttons}>
             <button className={Style.buttoncreate} onClick={handleOpenModal}>
               <svg
-                width="42"
-                height="42"
+                width="30"
+                height="30"
                 viewBox="0 0 42 42"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

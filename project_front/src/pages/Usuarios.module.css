@@ -2,16 +2,17 @@
   font-family: "Poppins";
 }
 .nav {
-  color: gray;
   display: flex;
+  color: gray;
+  font-weight: 500;
+  margin: 0 10px 5px 10px;
 }
 .nav ul {
-  display: flex;
+  display: contents;
   list-style: none;
-  justify-content: center;
 }
 .nav li {
-  padding-right: 3em ;
+  width: 180px;
 }
 .nav li a {
   text-decoration: none;
@@ -39,8 +40,9 @@
   background-color: rgba(0, 0, 0, 0);
   float: right;
   cursor: pointer;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  margin: 3% 10px 5px 10px;
 }
 
 .buttons {
@@ -144,6 +146,7 @@
   height: 4rem;
   border-bottom: 1px solid #ccc;
   position: relative;
+  margin-bottom:20px;
 }
 
 .bottomCard {
@@ -168,6 +171,30 @@
   flex-wrap: wrap;
   justify-content: left;
 }
+
+.proyectCardUser {
+  display: flex;
+  color: gray;
+  margin: 3% 10px 5px 10px;
+  font-size: 14px;
+}
+
+.proyectCardUser ul {
+  display: contents;
+  list-style: none;
+  justify-content: center;
+  height: fit-content;
+}
+
+.proyectCardUser li {
+  width: 200px;
+}
+.proyectCardUser li p {
+  text-decoration: none;
+  display: contents;
+  color: inherit;
+}
+
 
 @media (min-width: 768px) {
   .button63 {
