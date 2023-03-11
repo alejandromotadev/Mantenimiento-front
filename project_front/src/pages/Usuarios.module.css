@@ -31,6 +31,11 @@
   line-height: 60px;
   color: #636363;
 }
+.titulo a {
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+}
 
 .buttonx {
   color: rgba(0, 0, 0, 30%);

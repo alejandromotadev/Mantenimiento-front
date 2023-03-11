@@ -3,6 +3,7 @@ import { axiosInstance } from "../services/axios";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import Navbar from "../components/NavItems";
+import { Link  } from "react-router-dom";
 import { MultiSelect } from "react-multi-select-component";
 import { faPen, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -189,7 +190,7 @@ const Usuarios = () => {
       <Navbar />
       <div className={Style.content}>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <h3 className={Style.titulo}>Proyectos | Usuarios</h3>
+          <h3 className={Style.titulo}> <Link to ="/inicio">Proyectos</Link> | <Link to ="/usuarios">Usuarios</Link> </h3>
           <svg
             style={{
               marginTop: "auto",
