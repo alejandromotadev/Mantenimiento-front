@@ -105,6 +105,10 @@ const Usuarios = () => {
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
+  const [isModalOpenUpdate, setIsModalOpenUpdate] = useState(false);
+  const handleOpenModalUpdate = () => setIsModalOpenUpdate(true);
+  const handleCloseModalUpdate = () => setIsModalOpenUpdate(false);
+
   const [nombre, setNombre] = useState("");
   const [rol, setRol] = useState("");
   const [usuario, setUser] = useState("");
@@ -163,7 +167,7 @@ const Usuarios = () => {
                     <div>
                       <button
                         className={Style.buttonx}
-                        onClick={updateUser.bind(this, elemento.id)}
+                        onClick={deleteUser.bind(this, elemento.id)}
                       >
                         <svg
                           width="25"
@@ -181,7 +185,7 @@ const Usuarios = () => {
                       </button>
                       <button
                         className={Style.buttonx}
-                        onClick={deleteUser.bind(this, elemento.id)}
+                        onClick={handleOpenModalUpdate}
                       >
                         <svg
                           width="25"
@@ -318,6 +322,42 @@ const Usuarios = () => {
               onClick={crearUsuario}
             >
               Crear usuario
+            </button>
+          </div>
+        </Modal>
+      </div>
+            {/*Modal actualizar usuario*/}
+            <div>
+        <Modal isOpen={isModalOpenUpdate} onClose={handleCloseModalUpdate}>
+          <h2>Actualizar Usuario</h2>
+          <p>Nombre</p>
+          <input
+            readOnly
+            className={Style.styleInput}
+            defaultValue={data[0].nombre}
+          ></input>
+          <p>Rol</p>
+          <select
+            required
+            name="rol-user"
+            id="rol-user"
+            className={Style.styleInputDrop}
+            placeholder="Escribe el nombre del usuario"
+            onChange={(e) => {
+              setRol(e.target.value);
+            }}
+          >
+            <option value="rol">rol</option>
+            <option value="rol">rol</option>
+            <option value="rol">rol</option>
+            <option value="rol">rol</option>
+          </select>
+          <div className={Style.createDiv}>
+            <button
+              className={Style.createProjectButton}
+              onClick={updateUser.bind(this, data[0].id)}
+            >
+              Actualizar usuario
             </button>
           </div>
         </Modal>
