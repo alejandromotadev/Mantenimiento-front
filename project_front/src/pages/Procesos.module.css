@@ -112,7 +112,7 @@
   font-family: 'Poppins';
   font-size: 16px;
   font-weight: 400;
-  height: 40px;
+  /* height: 40px; */
   outline: none;
   width: 320px;
 }
@@ -134,14 +134,12 @@
   background-image: linear-gradient(90deg, #0085FF -21.97%, #00E0FF 113.38%);
   border-radius: 30px;
   border: 0;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   color: #FFFFFF;
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 50px;
   line-height: 1em;
-  width: 80px;
   height: 60px;
   padding: 19px 24px;
 }

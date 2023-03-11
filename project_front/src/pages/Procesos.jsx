@@ -5,14 +5,13 @@ import { axiosInstance } from "../services/axios";
 import greyLogo from "../assets/gray_logo.svg";
 import Mas from "../assets/Mas.svg";
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/VentanaModal";
+import Modal from "../components/Modal";
 import { validateToken } from "../services/verifyToken";
 import Navbar from "../components/NavItems";
 
 const Procesos = () => {
   const navigate = useNavigate();
   const [payload, setDatos] = useState([]);
-  const [showModal, setShowModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   var token = localStorage.getItem("token");
   console.log(localStorage.getItem("token"));
@@ -83,13 +82,10 @@ const Procesos = () => {
     setIsChecked(event.target.checked);
   }
 
-  function OpenModal() {
-    setShowModal(true);
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  function CloseModal() {
-    setShowModal(false);
-  }
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
   var numProcesos = payload.length;
   const cuadros = [...Array(numProcesos)].map((_, i) => (
@@ -118,7 +114,7 @@ const Procesos = () => {
           <div className={Style.container}>{cuadros}</div>
 
           <div className={Style.buttons}>
-            <button className={Style.buttoncreate} onClick={OpenModal}>
+            <button className={Style.buttoncreate} onClick={handleOpenModal}>
               <svg
                 width="42"
                 height="42"
@@ -149,19 +145,18 @@ const Procesos = () => {
           </div>
 
           <div>
-            {showModal && (
-              <Modal title="Nuevo proceso" onClose={CloseModal}>
-                <p className={Style.titulo2}>Nombre:</p>
-                <div className={Style.inputcont}>
-                  <input className={Style.input} id="nombre_proceso_nuevo" />
-                </div>
-                <div className={Style.wrapper}>
-                  <button className={Style.button63} onClick={navigateProcess}>
-                    Entrar
-                  </button>
-                </div>
-              </Modal>
-            )}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+              <h2>Nuevo proceso</h2>
+              <p className={Style.titulo2}>Nombre:</p>
+              <div className={Style.inputcont}>
+                <input className={Style.input} id="nombre_proceso_nuevo" />
+              </div>
+              <div className={Style.wrapper}>
+                <button className={Style.button63} onClick={navigateProcess}>
+                  Crear proceso
+                </button>
+              </div>
+            </Modal>
           </div>
         </div>
       </div>
