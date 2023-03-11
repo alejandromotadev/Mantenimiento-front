@@ -1,10 +1,9 @@
 import Style from "./Usuarios.module.css";
 import { axiosInstance } from "../services/axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import logoProject from "../assets/LogoProject.svg";
 import Modal from "../components/Modal";
 import Navbar from "../components/NavItems";
+import { MultiSelect } from "react-multi-select-component";
 const Usuarios = () => {
   // const [data, setData] = useState([]);
   const data = [
@@ -12,6 +11,12 @@ const Usuarios = () => {
       id: 1,
       nombre: "Azul Briones",
       rol: "Gestor de calidad",
+      usuario: "azul",
+      proyectos: [		
+        { label: "Proyecto 1", value: 1 },
+      { label: "Proyecto 2", value: 2 },
+    ],
+      password: "12345",
       creado: "11 Febrero, 2023",
     },
     {
@@ -19,8 +24,22 @@ const Usuarios = () => {
       nombre: "Gissele Zavala",
       rol: "Tester",
       creado: "15 Febrero, 2023",
-    }
+      proyectos: [		
+        { label: "Proyecto 1", value: 1 },
+      { label: "Proyecto 2", value: 2 },
+    ],
+      password: "12345",
+    },
   ];
+
+  	//opciones para proyectos con multiselect
+	const options = [
+		{ label: "Proyecto 1", value: 1 },
+		{ label: "Proyecto 2", value: 2 },
+		{ label: "Proyecto 3", value: 3 },
+		{ label: "Proyecto 4", value:4} //para poner una opcion que ya venga marcada, primero debe existir en las opciones disponibles
+	];
+
   useEffect(() => {
     axiosInstance
       .get("insert-url", {
@@ -40,27 +59,28 @@ const Usuarios = () => {
 
   const crearUsuario = () => {
     if (usuario !== null && usuario !== "") {
-        let postData = {
-          id_users: 1,
-          user: usuario,
-          name: nombre,
-          rol: rol,
-          password: password,
-        };
-        axiosInstance
-          .post("insert-url", postData, {
-            headers: {
-              "Content-type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          })
-          .then((respuesta) => {
-            console.log(respuesta);
-            window.location = "/a-url";
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+      let postData = {
+        id_users: 1,
+        user: usuario,
+        name: nombre,
+        rol: rol,
+        proyectos: proyectos,
+        password: password,
+      };
+      axiosInstance
+        .post("insert-url", postData, {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
+        .then((respuesta) => {
+          console.log(respuesta);
+          window.location = "/a-url";
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     } else {
       alert("No username provided");
     }
@@ -105,14 +125,63 @@ const Usuarios = () => {
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
-  const [isModalOpenUpdate, setIsModalOpenUpdate] = useState(false);
-  const handleOpenModalUpdate = () => setIsModalOpenUpdate(true);
-  const handleCloseModalUpdate = () => setIsModalOpenUpdate(false);
+  //Modal compartido
+  const openModal = (op, usuario) => {
+    handleOpenModal();
+    setNombre("");
+    setRol("");
+    setUser("");
+    setPassword("");
+    setProyectos([]);
+    setOpcion(op);
 
+    if (op === 1) {
+      setTituloModal("Nuevo usuario");
+      setTituloBoton("Crear usuario");
+    } else if (op === 2) {
+      setTituloModal("Editar usuario");
+      setTituloBoton("Actualizar usuario");
+      setId(usuario.id);
+      setNombre(usuario.nombre);
+      setRol(usuario.rol);
+      setUser(usuario.usuario);
+      setPassword(usuario.password);
+      setProyectos(usuario.proyectos);
+    }
+
+    window.setTimeout(function () {
+      document.getElementById("nombre").focus();
+    }, 500);
+  };
+
+  const validar = () => {
+    if (opcion === 1) {
+      if (
+        nombre.trim() === "" ||
+        rol.trim() === "" ||
+        usuario.trim() === "" ||
+        password.trim() === ""
+      ) {
+        alert("Rellena todos los datos");
+      } else {
+        handleCloseModal();
+        crearUsuario();
+      }
+    } else {
+      handleCloseModal();
+      updateUser(id);
+    }
+  };
+
+  const [tituloBoton, setTituloBoton] = useState("");
+  const [tituloModal, setTituloModal] = useState("");
+  const [opcion, setOpcion] = useState(1);
+  const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
   const [rol, setRol] = useState("");
   const [usuario, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [proyectos, setProyectos] = useState([]);
   return (
     <div>
       <Navbar />
@@ -185,7 +254,7 @@ const Usuarios = () => {
                       </button>
                       <button
                         className={Style.buttonx}
-                        onClick={handleOpenModalUpdate}
+                        onClick={() => openModal(2, elemento)}
                       >
                         <svg
                           width="25"
@@ -242,7 +311,7 @@ const Usuarios = () => {
           </div>
 
           <div className={Style.buttons}>
-            <button className={Style.buttoncreate} onClick={handleOpenModal}>
+            <button className={Style.buttoncreate} onClick={() => openModal(1)}>
               <svg
                 width="30"
                 height="30"
@@ -273,12 +342,13 @@ const Usuarios = () => {
           </div>
         </div>
       </div>
-      {/* Modal */}
+
       <div>
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <h2>Nuevo Usuario</h2>
+          <h2>{tituloModal}</h2>
           <p>Nombre</p>
           <input
+            value={nombre}
             className={Style.styleInput}
             placeholder="Escribe el nombre del usuario"
             onChange={(e) => {
@@ -287,6 +357,7 @@ const Usuarios = () => {
           ></input>
           <p>Rol</p>
           <select
+            defaultValue={rol}
             name="rol-user"
             id="rol-user"
             className={Style.styleInputDrop}
@@ -300,16 +371,32 @@ const Usuarios = () => {
             <option value="rol">rol</option>
             <option value="rol">rol</option>
           </select>
+          <p>Proyectos</p>
+						<MultiSelect
+							className={Style.multi_select}
+							options={options}
+							showCheckbox
+              value={proyectos}
+							onChange={setProyectos}
+							overrideStrings={{
+								selectAll: "Escoger todos los proyectos",
+								search: "Buscar proyecto",
+								allItemsAreSelected: "Todos los proyectos",
+								selectSomeItems: "Selecciona los proyectos",
+							}}
+						/>
           <p>Nombre de usuario</p>
           <input
+            value={usuario}
             className={Style.styleInput}
             placeholder="Corto y sin espacios"
             onChange={(e) => {
               setUser(e.target.value);
             }}
           ></input>
-          <p>Contrasena</p>
+          <p>Contraseña</p>
           <input
+            value={password}
             className={Style.styleInput}
             placeholder="Al menos 8 caracteres"
             onChange={(e) => {
@@ -317,47 +404,8 @@ const Usuarios = () => {
             }}
           ></input>
           <div className={Style.createDiv}>
-            <button
-              className={Style.createProjectButton}
-              onClick={crearUsuario}
-            >
-              Crear usuario
-            </button>
-          </div>
-        </Modal>
-      </div>
-            {/*Modal actualizar usuario*/}
-            <div>
-        <Modal isOpen={isModalOpenUpdate} onClose={handleCloseModalUpdate}>
-          <h2>Actualizar Usuario</h2>
-          <p>Nombre</p>
-          <input
-            readOnly
-            className={Style.styleInput}
-            defaultValue={data[0].nombre}
-          ></input>
-          <p>Rol</p>
-          <select
-            required
-            name="rol-user"
-            id="rol-user"
-            className={Style.styleInputDrop}
-            placeholder="Escribe el nombre del usuario"
-            onChange={(e) => {
-              setRol(e.target.value);
-            }}
-          >
-            <option value="rol">rol</option>
-            <option value="rol">rol</option>
-            <option value="rol">rol</option>
-            <option value="rol">rol</option>
-          </select>
-          <div className={Style.createDiv}>
-            <button
-              className={Style.createProjectButton}
-              onClick={updateUser.bind(this, data[0].id)}
-            >
-              Actualizar usuario
+            <button className={Style.createProjectButton} onClick={validar}>
+              {tituloBoton}
             </button>
           </div>
         </Modal>
