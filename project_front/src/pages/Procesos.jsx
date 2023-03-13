@@ -109,7 +109,7 @@ const Procesos = () => {
       <Navbar />
       <div className={Style.main}>
         <div className={Style.content}>
-          <h1 className={Style.titulo}>Proyectos | Fases | Procesos</h1>
+          <h1 className={Style.titulo}> <Link to ='/inicio'> Proyectos </Link>| <Link to ="/fases"> Fases </Link> | Procesos</h1>
           <hr style={{ marginBottom: "20px" }} />
           <div className={Style.container}>{cuadros}</div>
 

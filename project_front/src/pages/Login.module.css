@@ -41,8 +41,8 @@
   box-sizing: border-box;
   font-family: 'Poppins';
   font-size: 16px;
-  font-weight: 400;
-  height: 60px;
+  font-weight: 400px;
+  height: 30px;
   outline: none; 
   width: 250px;
 }
@@ -80,11 +80,11 @@
 }
 
 .titulo2 {
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 0px;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: 400;
+ 
   font-size: 20px;
   line-height: 60px;
   color: #1E1E1E;
