@@ -1,23 +1,58 @@
-.modaloverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* valor alto de z-index */
-  }
-  
-  .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 20px;
-    padding: 20px;
-    z-index: 1001; /* valor más alto de z-index */
-  }
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
 
+.modal {
+  max-height: 70%;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  z-index: 1001;
+}
 
-  
+#modalDiv::-webkit-scrollbar{
+  width: 10px;
+}
+
+#modalDiv::-webkit-scrollbar-thumb {
+  background-color: #D9D9D9; 
+  border-radius: 5px; 
+}
+
+.centerButton{
+  display: flex;
+}
+
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  z-index: 1000;
+
+}
+
+.closeModalButton{
+  margin: 0 auto;
+  padding-top: 10px;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight:800;
+  font-size:15px;
+  border: none;
+  background-color: white !important;
+  cursor: pointer;
+}

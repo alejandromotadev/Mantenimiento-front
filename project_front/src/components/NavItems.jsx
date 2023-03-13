@@ -7,6 +7,9 @@ export const Nav = () => {
   const navigateToLogin = () => {
     navigate('/');
   };
+  const navigateToUsers = () => {
+    navigate('/usuarios');
+  };
   const generate = () => {
     alert("boton");
   };
@@ -19,7 +22,7 @@ export const Nav = () => {
 
       <ul>
         <li>
-          <button className="container-users" onClick={generate}>
+          <button className="container-users" onClick={navigateToUsers}>
             <svg
               width="40"
               height="40"
