@@ -4,7 +4,7 @@ import Style from "./Procesos.module.css";
 import { axiosInstance } from "../services/axios";
 import greyLogo from "../assets/gray_logo.svg";
 import Mas from "../assets/Mas.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Modal from "../components/Modal";
 import { validateToken } from "../services/verifyToken";
 import Navbar from "../components/NavItems";
